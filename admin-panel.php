@@ -56,6 +56,7 @@
     <!-- ajax
         ============================================ -->
     <script src=" http://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js "></script>
+
 </head>
 <body>
 <script>
@@ -498,6 +499,15 @@ if (isset($_POST['send'])) {
 <!-- main JS
 ============================================ -->
 <script src="js/main.js"></script>
+<!-- WYSIWYG
+    ============================================ -->
+<script src="ckeditor/ckeditor.js"></script>
+
+<script>
+    // Replace the <textarea id="editor1"> with a CKEditor
+    // instance, using default configuration.
+    CKEDITOR.replace( 'content' );
+</script>
 
 
 
