@@ -42,7 +42,13 @@
         <div class="wrap-login100 p-b-160 p-t-50">
             <form class="login100-form validate-form" method="post" action="registration2.php">
 					<span class="login100-form-title p-b-43">
-						Build your profile
+						<div class="welcome-section1 content-hidden1">
+                            <div class="content-wrap1">
+						        <ul class="fly-in-text1">
+                                    <li>Registration</li>
+                                </ul>
+                            </div>
+                        </div>
                     </span>
                 <div class="wrap-input100 rs1 validate-input" data-validate = "First name is required">
                     <input class="input100" type="text" name="first">
@@ -85,6 +91,11 @@
                         Sign in
                     </button>
                 </div>
+                <div class="text-center w-full p-t-23">
+                    <a href="login.php." class="txt1">
+                        <i class="fas fa-arrow-left"></i> Back on the login page
+                    </a>
+                </div>
             </form>
         </div>
         <div class="wrapper">
@@ -119,6 +130,7 @@
 
 <!--===============================================================================================-->
 <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <!--===============================================================================================-->
 <script src="vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
@@ -134,7 +146,7 @@
 <!--===============================================================================================-->
 <script src="js/mainLOG.js"></script>
 
-
+<!--===============================Password strenght============================================-->
 <script type="text/javascript">
     $(document).ready(function(){
         $("#pass").keyup(function(){
@@ -163,26 +175,29 @@
 
             if(no==1)
             {
-                $("#meter").animate({width:'25%'});
-                meter.style.backgroundColor="#FF0000";
+                $("#meter").animate({width:'140px'});
+                meter.style.backgroundColor="#990d35";
+                JOptionPane.showMessageDialog("Too short")
+
             }
 
             if(no==2)
             {
-                $("#meter").animate({width:'45%'});
-                meter.style.backgroundColor="#F5BCA9";
+                $("#meter").animate({width:'280px'});
+                meter.style.backgroundColor="#ed9b40";
             }
 
             if(no==3)
             {
-                $("#meter").animate({width:'70%'});
-                meter.style.backgroundColor="#FF8000";
+                $("#meter").animate({width:'420px'});
+                meter.style.backgroundColor="#385a76";
             }
 
             if(no==4)
             {
-                $("#meter").animate({width:'100%'});
+                $("#meter").animate({width:'560px'});
                 meter.style.backgroundColor="#00FF40";
+
             }
         }
 
@@ -193,8 +208,31 @@
         }
     }
 </script>
+<!--===============================Password strenght============================================-->
+<!--===============================Animation title============================================-->
+<script type="text/javascript">
+
+    $(function() {
+
+        var welcomeSection1 = $('.welcome-section1'),
+            enterButton1 = welcomeSection1.find('.enter-button1');
+
+        setTimeout(function() {
+            welcomeSection1.removeClass('content-hidden1');
+        }, 500);
+
+        enterButton1.on('click', function(e) {
+            e.preventDefault();
+            welcomeSection1.addClass('content-hidden1').fadeOut();
+        });
 
 
+    })();
+
+
+
+</script>
+<!--===============================Animation title============================================-->
 
 
 </body>

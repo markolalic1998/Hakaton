@@ -79,7 +79,7 @@
                                             ?>
                                             <form method="post" action="logout.php">
 
-                                                <li><a href="#"><?php echo $_SESSION['username']; ?></a></li>
+                                                <li><a href="profile.php"><?php echo $_SESSION['username']; ?></a></li>
                                                 <li><input type="submit" class="logoutbt" value="Sign out" name="logout"></li>
                                             </form>
 
@@ -129,7 +129,7 @@
                                         <li><a href="index.php">Home</a></li>
                                         <li><a href="#">Community</a></li>
                                         <li class="active"><a href="#">Topics</a></li>
-                                        <li><a href="#">Profil</a></li>
+                                        <li><a href="profile.php">Profil</a></li>
                                         <li><a href="contact-us.php">contact us</a></li>
                                     </ul>
                                 </nav>

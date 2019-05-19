@@ -35,14 +35,19 @@
 <body>
 
  <!-- ovde dodati php za proveru session da li je logovan cim udje -->
-
-
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-b-160 p-t-50">
                 <form class="login100-form validate-form" method="post" action="userLogin.php">
 					<span class="login100-form-title p-b-43">
-						Account Login
+                        <div class="welcome-section content-hidden">
+                            <div class="content-wrap">
+						        <ul class="fly-in-text">
+                                    <li>Account</li>
+                                    <li>login</li>
+                                </ul>
+                            </div>
+                        </div>
 					</span>
 					<div class="wrap-input100 rs1 validate-input" data-validate = "Username is required">
 						<input class="input100" type="text" name="username">
@@ -76,6 +81,7 @@
 	
 <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <!--===============================================================================================-->
 	<script src="vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
@@ -91,7 +97,28 @@
 <!--===============================================================================================-->
 	<script src="js/mainLOG.js"></script>
 
+ <script type="text/javascript">
 
+     $(function() {
+
+         var welcomeSection = $('.welcome-section'),
+             enterButton = welcomeSection.find('.enter-button');
+
+         setTimeout(function() {
+             welcomeSection.removeClass('content-hidden');
+         }, 500);
+
+         enterButton.on('click', function(e) {
+             e.preventDefault();
+             welcomeSection.addClass('content-hidden').fadeOut();
+         });
+
+
+     })();
+
+
+
+ </script>
 
 </body>
 </html>

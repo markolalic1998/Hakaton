@@ -53,8 +53,8 @@
  }
 
 #form a:hover{
-	color:green;
-	border: 2px solid green;
+	color:#ff0000;
+	border: 2px solid #ff0000;
 	background-color: #f4f4f4;
 	transition: .3s;
 }
@@ -62,7 +62,7 @@
 	transition: .3s;
 }
 #my:hover{
-	color: limegreen;
+	color: #cc0000;
 	transition: .3s;
 	cursor: default;
 }
@@ -76,7 +76,7 @@
 	padding:3px 16px;
 	text-align: center;
 	text-decoration: none;
-	display: inline-block;
+	display:block;
 	font-size: 12px;
 	margin-bottom: 2px;
 	-webkit-transition-duration: 0.4s; /* Safari */
@@ -84,6 +84,8 @@
 	cursor: pointer;
 	border: 2px solid #cc0000;
 	border-radius: 10px;
+	overflow: hidden;
+	transition: 1s all ease;
 }
 .logoutbt:hover {
 	background-color: #cc0000;

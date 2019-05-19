@@ -156,7 +156,7 @@ iframe {
   font-family: OpenSans-Regular;
   font-size: 13px;
   line-height: 1.4;
-  color: #cccccc;
+  color: #000000;
 }
 
 
@@ -181,11 +181,11 @@ iframe {
   align-items: center;
   padding: 15px;
 
-  background: #2575fc;
-  background: -webkit-linear-gradient(left, #cb002f, #fcaa33);
-  background: -o-linear-gradient(left, #cb002f, #fcaa33);
-  background: -moz-linear-gradient(left, #cb002f,#fcaa33);
-  background: linear-gradient(left, #cb002f, #fcaa33);
+  background: #ff0000;
+  background: -webkit-linear-gradient(left, #cc0000, #999999);
+  background: -o-linear-gradient(left, #cc0000, #999999);
+  background: -moz-linear-gradient(left, #cc0000,#999999);
+  background: linear-gradient(left, #cc0000, #999999);
 
 }
 
@@ -213,7 +213,7 @@ iframe {
   display: block;
   font-family: OpenSans-Regular;
   font-size: 30px;
-  color: #fefefe;
+  color: #000000;
   line-height: 1.2;
   text-transform: uppercase;
   text-align: center;
@@ -380,11 +380,11 @@ input.input100 {
   height: 100%;
   opacity: 0;
 
-  background: #2575fc;
-  background: -webkit-linear-gradient(right, #cb002f, #fcaa33);
-  background: -o-linear-gradient(right, #cb002f, #fcaa33);
-  background: -moz-linear-gradient(right, #cb002f, #fcaa33);
-  background: linear-gradient(right, #cb002f, #fcaa33);
+  background: #ff0000;
+  background: -webkit-linear-gradient(left, #cc0000, #999999);
+  background: -o-linear-gradient(left, #cc0000, #999999);
+  background: -moz-linear-gradient(left, #cc0000,#999999);
+  background: linear-gradient(left, #cc0000, #999999);
 
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
@@ -394,6 +394,7 @@ input.input100 {
 
 .login100-form-btn:hover {
   background-color: transparent;
+  color: black;
 }
 .login100-form-btn:hover:before {
   opacity: 1;
@@ -492,3 +493,81 @@ input.input100 {
     border-top-right-radius: 0px;
   }
 }
+
+
+/*Animation for login section*/
+.welcome-section {
+  position: absolute;
+  width: 100%;
+  height: 500px;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+.welcome-section .content-wrap {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+.welcome-section .content-wrap .fly-in-text {
+  list-style: none;
+}
+.welcome-section .content-wrap .fly-in-text li {
+  display: inline-block;
+  color: #000000;
+  opacity: 1;
+  transition: all 4s ease;
+}
+.welcome-section .content-wrap .fly-in-text li:last-child {
+  margin-right: 0;
+}
+
+
+.welcome-section.content-hidden .content-wrap .fly-in-text li { opacity: 0; }
+.welcome-section.content-hidden .content-wrap .fly-in-text li:nth-child(1) { transform: translate3d(-100px, 0, 0); }
+.welcome-section.content-hidden .content-wrap .fly-in-text li:nth-child(2) { transform: translate3d(100px, 0, 0); }
+
+@media (min-width: 800px) {
+  .welcome-section .content-wrap .fly-in-text li { font-size: 40px; }
+}
+
+/*Animation*/
+
+.welcome-section1 {
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+.welcome-section1 .content-wrap1 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+}
+.welcome-section1 .content-wrap1 .fly-in-text1 {
+    list-style: none;
+}
+.welcome-section1 .content-wrap1 .fly-in-text1 li {
+    display: inline-block;
+    color: #000000;
+    opacity: 1;
+    transition: all 4s ease;
+}
+.welcome-section1 .content-wrap1 .fly-in-text1 li:last-child {
+    margin-right: 0;
+}
+
+
+.welcome-section1.content-hidden1 .content-wrap1 .fly-in-text1 li { opacity: 0; }
+.welcome-section1.content-hidden1 .content-wrap1 .fly-in-text1 li:nth-child(1) { transform: translate3d(0, -100px, 0); }
+
+@media (min-width: 800px) {
+    .welcome-section1 .content-wrap1 .fly-in-text1 li {
+        font-size: 40px;
+    }
+}
+
