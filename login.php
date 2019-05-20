@@ -66,9 +66,7 @@
 						</button>
 					</div>
 					<div class="text-center w-full p-t-23">
-						<a href="registration.php" class="txt1">
-							Create a new account <i class="fas fa-arrow-right"></i>
-						</a>
+						<a href="registration.php" class="txt1">Create a new account <i class="fas fa-arrow-right"></i></a>
 					</div>
 				</form>
 			</div>

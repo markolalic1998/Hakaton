@@ -92,7 +92,7 @@
                     </button>
                 </div>
                 <div class="text-center w-full p-t-23">
-                    <a href="login.php." class="txt1">
+                    <a href="login.php" class="txt1">
                         <i class="fas fa-arrow-left"></i> Back on the login page
                     </a>
                 </div>

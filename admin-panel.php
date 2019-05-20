@@ -307,12 +307,12 @@ function abs(){
                         echo "<td>".$record['first']."</td>";
                         echo "<td>".$record['last']."</td>";
                         echo "<td>@".$record['username']."</td>";
-                        echo "<td><i class=\"fas fa-crown\" id='crown' title='Give ABS'></i>
+                        $r = $record['id_user'];
+                        echo "<td><i class=\"fas fa-crown\" id='crown' title='Give ABS' onclick=\"giveAbs(".$r.")\"></i>
                                   <i class=\"fas fa-exclamation-circle\" id='warn' title='Warn'></i>
                                   <i class=\"fas fa-minus-circle\" id='ban' title='Ban'></i>
                               </td>";
                         echo "<tr>";
-
                     }
                 }
                 ?>
@@ -507,6 +507,31 @@ if (isset($_POST['send'])) {
     // Replace the <textarea id="editor1"> with a CKEditor
     // instance, using default configuration.
     CKEDITOR.replace( 'content' );
+
+    window.addEventListener("load", init);
+
+    function $(id){
+        return document.getElementById(id);
+    }
+
+    function init(){
+   //     $('crown').addEventListener('click', giveAbs);
+    }
+
+    function giveAbs(user){
+        var xmlhttp = new XMLHttpRequest();
+        var x = window.confirm("Are you sure ?");
+        if(x) {
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    window.alert("ABS");
+                }
+            };
+            xmlhttp.open("POST", "users.php", true);
+            xmlhttp.send("abs="+1+"&user="+user);
+        }
+    }
+
 </script>
 
 
