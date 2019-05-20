@@ -42,6 +42,27 @@
 	15. scrollUp
 	16. mobile-menu-area
 -----------------------------------------------------------------------------------*/
+.modus{
+    display:none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+}
+.avatar {
+    width: 200px;
+    height:200px;
+    border-radius: 50%;
+}
 .col-md-12 h2{
     font-family: 'Fugaz One', cursive;
 }

@@ -277,13 +277,14 @@ function abs(){
 
 <div id="users" class="blog-content-area container" style="display: none">
     <h1 class="text-center">ABS USERS MANAGER</h1><br>
+
     <div class="row">
         <div class="col-md-2">
 
         </div>
         <div class="col-md-8">
             <hr><br>
-            <table class="table">
+            <table class="table" id="table">
                 <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
@@ -308,11 +309,10 @@ function abs(){
                         echo "<td>".$record['last']."</td>";
                         echo "<td>@".$record['username']."</td>";
                         $r = $record['id_user'];
-                        echo "<td><i class=\"fas fa-crown\" id='crown' title='Give ABS' onclick=\"giveAbs(".$r.")\"></i>
-                                  <i class=\"fas fa-exclamation-circle\" id='warn' title='Warn'></i>
-                                  <i class=\"fas fa-minus-circle\" id='ban' title='Ban'></i>
+                        echo "<td><i class=\"fas fa-plus-circle\" id='crown' title='Open Options' data-toggle='modal' data-target='#mymodal'></i>
                               </td>";
                         echo "<tr>";
+
                     }
                 }
                 ?>
@@ -320,6 +320,29 @@ function abs(){
             </table>
         </div>
     </div>
+    <!-- MODAL START -->
+    <div class="modal" id="mymodal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" type="button" data-dismiss="modal">x</button>
+                    <h2 class="modal-title" id="username_opt"></h2>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                    <div class="col-md-4">
+                        <img src="img/profile/<?php echo $_SESSION['picture']; ?>" alt="Photo" height="120px" width="120px" class="img-circle">
+                    </div>
+                    <div class="col-md-8">
+                        <p id="username2_opt"></p>
+                        <p id="lastname_opt"></p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- MODAL END -->
 </div>
 
 
@@ -499,6 +522,8 @@ if (isset($_POST['send'])) {
 <!-- main JS
 ============================================ -->
 <script src="js/main.js"></script>
+<script src="js/getDataFromTable.js"></script>
+
 <!-- WYSIWYG
     ============================================ -->
 <script src="ckeditor/ckeditor.js"></script>
@@ -509,15 +534,16 @@ if (isset($_POST['send'])) {
     CKEDITOR.replace( 'content' );
 
     window.addEventListener("load", init);
-
+    
     function $(id){
         return document.getElementById(id);
     }
-
     function init(){
    //     $('crown').addEventListener('click', giveAbs);
     }
-
+    function showModus(){
+        $('modus').style.display = "block";
+    }
     function giveAbs(user){
         var xmlhttp = new XMLHttpRequest();
         var x = window.confirm("Are you sure ?");
