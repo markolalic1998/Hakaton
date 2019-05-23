@@ -53,6 +53,9 @@
     overflow: auto;
     background-color: rgba(0,0,0,0.4);
 }
+.modalp{
+    display: inline;
+}
 .imgcontainer {
     text-align: center;
     margin: 24px 0 12px 0;
@@ -106,6 +109,22 @@
 .logoutbt:hover {
     background-color: #fff;
     color: black;
+}
+.logoutbt-modal{
+    background-color: transparent;
+    color: black;
+    padding:3px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border: 2px solid #A9A9A9;
+    border-radius: 10px;
 }
 /*----------------------------------------*/
 /*  1.  Theme default CSS

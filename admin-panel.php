@@ -307,10 +307,17 @@ function abs(){
                         echo "<td>".$record['id_user']."</td>";
                         echo "<td>".$record['first']."</td>";
                         echo "<td>".$record['last']."</td>";
-                        echo "<td>@".$record['username']."</td>";
+                        echo "<td>".$record['username']."</td>";
                         $r = $record['id_user'];
                         echo "<td><i class=\"fas fa-plus-circle\" id='crown' title='Open Options' data-toggle='modal' data-target='#mymodal'></i>
                               </td>";
+
+
+
+                        echo "<td style='display:none;'>".$record['picture']."</td>";
+                        echo "<td style='display:none;'>".$record['registered']."</td>";
+                        echo "<td style='display:none;'>".$record['abs']."</td>";
+
                         echo "<tr>";
 
                     }
@@ -326,16 +333,24 @@ function abs(){
             <div class="modal-content">
                 <div class="modal-header">
                     <button class="close" type="button" data-dismiss="modal">x</button>
-                    <h2 class="modal-title" id="username_opt"></h2>
+                    <h2 class="modal-title" id="username_opt" style="text-align: center; font-weight: bold;"></h2>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                     <div class="col-md-4">
-                        <img src="img/profile/<?php echo $_SESSION['picture']; ?>" alt="Photo" height="120px" width="120px" class="img-circle">
+                        <img src="img/profile/<?php echo $_SESSION['picture']; ?>" id="modal-photo" alt="Photo" height="120px" width="120px" class="img-circle">
                     </div>
-                    <div class="col-md-4">
-                        <p id="username2_opt"></p>
-                        <p id="lastname_opt"></p>
+                    <div class="col-md-6">
+                        <span style="font-weight: bold;">Username:  </span><p class="modalp" id="username2_opt" style="display: inline;"></p>
+                        <br>
+                        <span style="font-weight: bold;">Name:  </span><p class="modalp" id="firstname_opt" style="display: inline;"></p><p class="modalp" id="lastname_opt" style="display: inline;"></p>
+                        <br>
+                        <span style="font-weight: bold;">Registered:  </span><p class="modalp" id="reg_opt" style="display: inline;"></p>
+                        <br>
+                        <span style="font-weight: bold;">Status:  </span><p class="modalp" id="status_opt" style="display: inline;"></p>
+                        <br>
+                        <button type="button" class="logoutbt" id="abs">ABS</button>
+                        <button type="button" class="logoutbt" id="ban">BAN</button>
                     </div>
                     </div>
                 </div>
