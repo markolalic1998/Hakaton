@@ -49,14 +49,15 @@
                             </div>
                         </div>
 					</span>
+                    <p id="login-mess"></p>
 					<div class="wrap-input100 rs1 validate-input" data-validate = "Username is required">
-						<input class="input100" type="text" name="username">
+						<input class="input100" type="text" name="username" id="username">
 						<span class="label-input100">Username</span>
 					</div>
 					
 					
 					<div class="wrap-input100 rs2 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" name="password">
+						<input class="input100" type="password" name="password" id="password">
 						<span class="label-input100">Password</span>
 					</div>
 
@@ -113,7 +114,19 @@
 
 
      })();
+     
 
+     function login(){
+         var xmlhttp = new XMLHttpRequest();
+         xmlhttp.onreadystatechange = function () {
+             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                 document.getElementById('login-mess').innerText = xmlhttp.responseText;
+             }
+         };
+
+         xmlhttp.open("POST", "userLogin.php", true);
+         xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+     }
 
 
  </script>
