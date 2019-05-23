@@ -333,7 +333,7 @@ function abs(){
                     <div class="col-md-4">
                         <img src="img/profile/<?php echo $_SESSION['picture']; ?>" alt="Photo" height="120px" width="120px" class="img-circle">
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-4">
                         <p id="username2_opt"></p>
                         <p id="lastname_opt"></p>
                     </div>
@@ -522,6 +522,7 @@ if (isset($_POST['send'])) {
 <!-- main JS
 ============================================ -->
 <script src="js/main.js"></script>
+
 <script src="js/getDataFromTable.js"></script>
 
 <!-- WYSIWYG
@@ -534,7 +535,7 @@ if (isset($_POST['send'])) {
     CKEDITOR.replace( 'content' );
 
     window.addEventListener("load", init);
-    
+
     function $(id){
         return document.getElementById(id);
     }

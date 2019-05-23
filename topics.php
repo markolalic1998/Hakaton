@@ -36,7 +36,6 @@ if(mysqli_fetch_array($result)>0) {
 
 
                     <i class="fas fa-fire" style="display: block; color: red; font-size: 20px;" title="More then 5 comments"></i>
-
             </div>
         </div><!-- /.single-blog-post -->
         </div>
