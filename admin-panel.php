@@ -291,7 +291,7 @@ function abs(){
                     <th scope="col">First</th>
                     <th scope="col">Last</th>
                     <th scope="col">Username</th>
-                    <th scope="col">Options</th>
+                    <th scope="col">Status</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -308,15 +308,21 @@ function abs(){
                         echo "<td>".$record['first']."</td>";
                         echo "<td>".$record['last']."</td>";
                         echo "<td>".$record['username']."</td>";
-                        $r = $record['id_user'];
+                        if($record['banned'] == 1)
+                            echo "<td style='color:#f00; font-weight: bold;'>Banned</td>";
+                        elseif($record['abs'] == 1)
+                            echo "<td style='color: #000; font-weight: bold;'>Abs</td>";
+                        else
+                            echo "<td>Member</td>";
+
                         echo "<td><i class=\"fas fa-plus-circle\" id='crown' title='Open Options' data-toggle='modal' data-target='#mymodal'></i>
                               </td>";
-
-
 
                         echo "<td style='display:none;'>".$record['picture']."</td>";
                         echo "<td style='display:none;'>".$record['registered']."</td>";
                         echo "<td style='display:none;'>".$record['abs']."</td>";
+                        echo "<td style='display:none;'>".$record['banned']."</td>";
+
 
                         echo "<tr>";
 
@@ -551,27 +557,21 @@ if (isset($_POST['send'])) {
 
     window.addEventListener("load", init);
 
+    function checkBanUnban(){
+        var status = $('status').innerHTML;
+        var ban = $('ban');
+
+        if(status == "Banned")
+            ban.innerHTML = "UNBAN";
+        else
+            ban.innerHTML = "BAN";
+    }
+
     function $(id){
         return document.getElementById(id);
     }
     function init(){
    //     $('crown').addEventListener('click', giveAbs);
-    }
-    function showModus(){
-        $('modus').style.display = "block";
-    }
-    function giveAbs(user){
-        var xmlhttp = new XMLHttpRequest();
-        var x = window.confirm("Are you sure ?");
-        if(x) {
-            xmlhttp.onreadystatechange = function () {
-                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    window.alert("ABS");
-                }
-            };
-            xmlhttp.open("POST", "users.php", true);
-            xmlhttp.send("abs="+1+"&user="+user);
-        }
     }
 
 </script>
