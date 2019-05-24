@@ -17,13 +17,6 @@ if(isset($_POST['ban']))
 
 if($abs == 1 && !empty($user)) {
 
-    $user_banned = 0;
-    $sql_user_banned = "SELECT * FROM users WHERE banned = '1' AND username = '$user';";
-    $result_user_banned = mysqli_query($connection, $sql_user_banned) or die(mysqli_error($connection));
-    if($result_user_banned)
-        echo "This user is banned, you can't give him an abs";
-    else
-        $user_banned = 1;
 
     $check_logged_abs = 0;
     if ($user == $_SESSION['username'])
@@ -41,10 +34,13 @@ if($abs == 1 && !empty($user)) {
 
 
     $sql_give_abs = "UPDATE users SET abs = '$change_status' WHERE username = '$user';";
+    $sql_abs_unban = "UPDATE users SET banned = '0' WHERE username = '$user';";
 
-    if ($check_logged_abs && $user_banned) {
+
+    if ($check_logged_abs) {
         $result_give_abs = mysqli_query($connection, $sql_give_abs);
         if ($result_give_abs) {
+            mysqli_query($connection, $sql_abs_unban) or die(mysqli_error($connection));
             if ($change_status)
                 echo "Drina Community Member " . $user . " is now ABS !";
             else

@@ -71,6 +71,7 @@
 }
 #crown{
     transition-duration: .5s;
+    cursor: default;
 }
 #crown:hover{
     color: gold;

@@ -40,7 +40,9 @@ $('ban').addEventListener('click', banUser);
         if(x) {
             xmlhttp.onreadystatechange = function () {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    alert(xmlhttp.responseText);
+                    var y = confirm(xmlhttp.responseText);
+                    if(y || !y)
+                        sendAjax();
                 }
             };
 
@@ -63,7 +65,9 @@ $('ban').addEventListener('click', banUser);
         if(x){
             xmlhttp.onreadystatechange = function(){
                 if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
-                    alert(xmlhttp.responseText);
+                   var y = confirm(xmlhttp.responseText);
+                   if(y || !y)
+                       sendAjax();
                 }
             };
 
@@ -73,7 +77,24 @@ $('ban').addEventListener('click', banUser);
         }
     }
 
+function sendAjax(){
 
+    //    document.getElementById("table_mess").innerHTML = '<img src="img/ajax_loader.gif" alt="loader">';
+
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function (){
+        if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+            $('table_mess').innerHTML = "";
+        }
+    };
+
+
+    xmlhttp.open("POST", "admin-panel.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send("table="+1);
+
+}
 
 
 

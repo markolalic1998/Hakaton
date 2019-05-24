@@ -217,6 +217,47 @@
                             </div>
                         </div><!-- /.popular-posts-area -->
 
+                        <div class="popular-posts-area">
+                            <h2 class="section-title" style="font-weight: bold">Topics that you like</h2>
+                            <div class="row">
+                                <?php
+                                require "database.php";
+                                $likeman = $_SESSION['username'];
+                                $sql_liked = "SELECT * FROM topics t, likes tc WHERE t.id_topics = tc.id_topics AND tc.username = '$likeman' LIMIT 2;";
+                                $result_liked = mysqli_query($connection, $sql_liked) or die(mysqli_error($connection));
+                                if(mysqli_num_rows($result_liked)>0) {
+                                    while ($record4 = mysqli_fetch_array($result_liked, MYSQLI_ASSOC)) {
+
+                                        ?>
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="single-popular-post">
+                                                <div class="post-img">
+                                                    <a href="#"><img src="img/blog/<?php echo $record4['cover']; ?>" alt="Popular Post"/></a>
+                                                    <a href="#" class="post-tag"><?php echo $record4['tag']; ?></a>
+                                                    <div class="post-info">
+                                                        <p>
+                                                            <span class="post-date"><a href="#"><?php echo $record4['created']; ?></a></span>
+                                                            <span class="post-date"><a href="#">3 comments</a></span>
+                                                            <span class="post-date"><a href="#"><?php echo $record4['creator']; ?></a></span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="post-content">
+                                                    <h6 class="post-title"><a href="#"><?php echo $record4['title']; ?></a></h6>
+                                                    <p class="post-short-desc"><?php echo $record4['content']; ?></p>
+                                                    <a href="single-blog.php?post=<?php echo $record4['id_topics'];?>" class="continue-link">Continue Reading...</a>
+                                                </div>
+                                            </div><!-- /.single-popular-post -->
+                                        </div>
+                                        <?php
+
+
+                                    }
+                                }
+                                ?>
+                            </div>
+                        </div><!-- /.popular-posts-area -->
+
                         <!-- latest-reviews-area start -->
                         <div id="latest-reviews" class="latest-reviews-area" style="display: none;">
                             <h2 class="section-title">latest topic</h2>

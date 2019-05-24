@@ -41,7 +41,7 @@ if (mysqli_num_rows($result_catch) > 0) {
                 $id_abs = $_SESSION['id'];
                 $text_notf = "Topic which you are posted was deleted by abs " . $_SESSION['username'];
                 $sql_send_notf = "INSERT INTO notf(id_user, id_abs, text)VALUES('$user_id', '$id_abs', '$text_notf')";
-                $result_send_notf = mysqli_query($connection, $sql_send_notf) or die(mysqli_error($connection));
+                $result_send_notf = mysqli_query($connection, $sql_send_notf);
 
             }
     }

@@ -277,6 +277,7 @@ function abs(){
 
 <div id="users" class="blog-content-area container" style="display: none">
     <h1 class="text-center">ABS USERS MANAGER</h1><br>
+    <p id="table_mess" class="text-center"></p>
 
     <div class="row">
         <div class="col-md-2">
@@ -294,38 +295,46 @@ function abs(){
                     <th scope="col">Status</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="table-response">
                 <?php
-                $sql = "SELECT * from users";
-                $result2 = mysqli_query($connection, $sql) or die(mysqli_error($connection));
 
-                if(mysqli_num_rows($result2) > 0)
-                {
-                    while($record = mysqli_fetch_array($result2))
-                    {
-                        echo "<tr>";
-                        echo "<td>".$record['id_user']."</td>";
-                        echo "<td>".$record['first']."</td>";
-                        echo "<td>".$record['last']."</td>";
-                        echo "<td>".$record['username']."</td>";
-                        if($record['banned'] == 1)
-                            echo "<td style='color:#f00; font-weight: bold;'>Banned</td>";
-                        elseif($record['abs'] == 1)
-                            echo "<td style='color: #000; font-weight: bold;'>Abs</td>";
-                        else
-                            echo "<td>Member</td>";
+                $table = 0;
 
-                        echo "<td><i class=\"fas fa-plus-circle\" id='crown' title='Open Options' data-toggle='modal' data-target='#mymodal'></i>
+                if(isset($_POST['table']))
+                    $table = $_POST['table'];
+
+
+                if($table == 0 || $table == 1){
+
+                    $sql = "SELECT * from users";
+                    $result2 = mysqli_query($connection, $sql) or die(mysqli_error($connection));
+
+                    if (mysqli_num_rows($result2) > 0) {
+                        while ($record = mysqli_fetch_array($result2)) {
+                            echo "<tr>";
+                            echo "<td>" . $record['id_user'] . "</td>";
+                            echo "<td>" . $record['first'] . "</td>";
+                            echo "<td>" . $record['last'] . "</td>";
+                            echo "<td>" . $record['username'] . "</td>";
+                            if ($record['banned'] == 1)
+                                echo "<td style='color:#f00; font-weight: bold;'>Banned</td>";
+                            elseif ($record['abs'] == 1)
+                                echo "<td style='color: #000; font-weight: bold;'>Abs</td>";
+                            else
+                                echo "<td>Member</td>";
+
+                            echo "<td><i class=\"fas fa-plus-circle\" id='crown' title='Open Options' data-toggle='modal' data-target='#mymodal'></i>
                               </td>";
 
-                        echo "<td style='display:none;'>".$record['picture']."</td>";
-                        echo "<td style='display:none;'>".$record['registered']."</td>";
-                        echo "<td style='display:none;'>".$record['abs']."</td>";
-                        echo "<td style='display:none;'>".$record['banned']."</td>";
+                            echo "<td style='display:none;'>" . $record['picture'] . "</td>";
+                            echo "<td style='display:none;'>" . $record['registered'] . "</td>";
+                            echo "<td style='display:none;'>" . $record['abs'] . "</td>";
+                            echo "<td style='display:none;'>" . $record['banned'] . "</td>";
 
 
-                        echo "<tr>";
+                            echo "<tr>";
 
+                        }
                     }
                 }
                 ?>
@@ -570,8 +579,8 @@ if (isset($_POST['send'])) {
     function $(id){
         return document.getElementById(id);
     }
-    function init(){
-   //     $('crown').addEventListener('click', giveAbs);
+    function init() {
+        //     $('crown').addEventListener('click', giveAbs);
     }
 
 </script>
