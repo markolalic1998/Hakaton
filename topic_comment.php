@@ -39,7 +39,7 @@ if(mysqli_num_rows($result)>0){
             <?php if($_SESSION['abs']) echo "<a id=\"del\" class=\"reply-link\" title=\"Delete\">Delete</a>"?>
         </div>
         <!-- replys -->
-        <div class="row" id="reply" style="display: none">
+        <div class="row" id="reply_form" style="display: none">
             <div class="col-sm-2"></div>
             <div class="col-sm-10">
                 <div class="comment-form-area">
@@ -73,15 +73,15 @@ if(mysqli_num_rows($result)>0){
     };
 
     window.addEventListener('load', init);
-
+/*
     function init() {
-        $("replyID").addEventListener('click',openReplay);
+        $("reply").addEventListener('click',openReplay);
     }
 
 
     function openReplay(){
-        $('reply').style.display="block";
+        $('reply_form').style.display="block";
     }
-
+*/
 </script>
 

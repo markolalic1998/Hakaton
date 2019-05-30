@@ -22,7 +22,7 @@ include_once "database.php";
     $result_ban_check = mysqli_query($connection, $sql_ban_check) or die(mysqli_error($connection));
     $ban = 0;
     if(mysqli_num_rows($result_ban_check))
-        echo "You are banned !";
+        header("Location: 404.html");
     else
         $ban = 1;
 

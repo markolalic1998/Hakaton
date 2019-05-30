@@ -329,6 +329,7 @@
     function init() {
         $("submit").addEventListener('click', loadData);
         $("like").addEventListener('click', addLike);
+        $("reply").addEventListener('click',openReplay);
     }
 
 
