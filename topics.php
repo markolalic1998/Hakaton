@@ -1,6 +1,6 @@
 <?php
 include "database.php";
-$sql = "SELECT * from topics ORDER BY created DESC";
+$sql = "SELECT * from topics ORDER BY created";
 $result = mysqli_query($connection, $sql) or (mysqli_error($connection));
 
 if(mysqli_fetch_array($result)>0) {
@@ -32,10 +32,29 @@ if(mysqli_fetch_array($result)>0) {
                 <h6 class="post-title"><a href="#"><?php echo $_SESSION['title'] ?></a></h6>
                 <p class="post-short-desc"> <?php echo $_SESSION['content'] ?> </p>
                 <a href="single-blog.php?post=<?php echo $_SESSION['id']; ?>" class="continue-link">Continue Reading...</a>
-                <hr>
 
 
-                    <i class="fas fa-fire" style="display: block; color: red; font-size: 20px;" title="More then 5 comments"></i>
+
+                <?php
+
+                $id_topicss = $record['id_topics'];
+
+                $sql_fire = "SELECT count(id_comment) as num_rows from topic_comments WHERE id_topics = '$id_topicss';";
+                $result_fire = mysqli_query($connection, $sql_fire) or die(mysqli_error($connection));
+                $values3 = mysqli_fetch_array($result_fire);
+                $num3 = $values3['num_rows'];
+
+                if($num3 > 5) {
+                    ?>
+
+                    <i class="fas fa-fire" style="display: block; color: red; font-size: 20px;"
+                       title="More then 5 comments"></i>
+
+                    <?php
+
+                }
+                    ?>
+
             </div>
         </div><!-- /.single-blog-post -->
         </div>

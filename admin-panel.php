@@ -493,7 +493,7 @@ if (isset($_POST['send'])) {
 
     $created = date("Y-m-d");
 
-    $sql = "INSERT INTO topics (title, content, creator, cover, tag, full_content, created) values ('$title', '$desc', '$creator', '$image', '$tag','$content', '$created')";
+    $sql = "INSERT INTO topics (title, content, creator, cover, tag, full_content, created, topic_likes) values ('$title', '$desc', '$creator', '$image', '$tag','$content', '$created', 0)";
 
     if (move_uploaded_file($_FILES['cover']['tmp_name'], $target) AND $tag != "" AND $title != "" AND $desc != "" AND $content != "" AND $image != "") {
         $result = mysqli_query($connection, $sql) or die(mysqli_error($connection));

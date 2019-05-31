@@ -182,7 +182,7 @@
 							<div class="row">
                                 <?php
                                 require "database.php";
-                                $sql_popular = "SELECT * , count(tc.id_topics) as likke FROM topics t, likes tc WHERE t.id_topics = tc.id_topics GROUP BY 1,2 ORDER BY count(tc.id_topics) DESC LIMIT 4;";
+                                $sql_popular = "SELECT * , count(tc.id_topics) as likke FROM topics t, likes tc WHERE t.id_topics = tc.id_topics GROUP BY 1,2 ORDER BY count(tc.id_topics) DESC LIMIT 2;";
                                 $result_popular = mysqli_query($connection, $sql_popular) or die(mysqli_error($connection));
                                 if(mysqli_num_rows($result_popular)>0) {
                                     while ($record3 = mysqli_fetch_array($result_popular, MYSQLI_ASSOC)) {
