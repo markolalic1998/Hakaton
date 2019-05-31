@@ -114,7 +114,7 @@
                         <nav>
                             <ul class="main-nav navbar-right">
                                 <li><a href="index.php">Home</a></li>
-                                <li><a href="#">Community</a></li>
+                                <li><a href="communitys.php">Community</a></li>
                                 <li><a href="blog-column-3.php">Topics</a></li>
                                 <li class="active"><a href="#">Profile</a></li>
                                 <li><img id="photo" class="img-circle" style="display: block" width="40px" height="40px" src="img/profile/<?php echo $_SESSION['picture'];?>" alt="ProfileSmallPicture"></li>
@@ -132,7 +132,7 @@
                         <nav id="dropdown">
                             <ul>
                                 <li><a href="index.php">Home</a></li>
-                                <li><a href="#">Community</a></li>
+                                <li><a href="communitys.php">Community</a></li>
                                 <li><a href="blog-column-3.php">Topics</a></li>
                                 <li class="active"><a href="#">Profile</a></li>
                                 <li><a href="contact-us.php">contact us</a></li>

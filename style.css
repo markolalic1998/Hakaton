@@ -66,6 +66,18 @@
 	transition: .3s;
 	cursor: default;
 }
+#button {
+	background-color: transparent;
+	color: limegreen;
+	border: 2px solid limegreen;
+	font-family: inherit;
+	outline: none;
+	min-width: 100px;
+	padding: 5px 10px;
+	font-size: inherit;
+	border-radius: 2px;
+	cursor: pointer;
+}
 #del_topic:hover{
 	cursor: default;
 }

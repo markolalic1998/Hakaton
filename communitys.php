@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Cummunitys</title>
+        <title>Communitys</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -15,6 +15,12 @@
 		============================================ -->		
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
         <link href="https://fonts.googleapis.com/css?family=Fugaz+One" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+
+
+        <!-- Font Awesome
+        ============================================ -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
 
         <!-- Bootstrap CSS
@@ -140,23 +146,6 @@
         </header>
         <!-- header-area end -->
 
-        <!-- search-area start -->
-        <div class="search-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="search-form">
-                            <span class="search-close"></span>
-                            <form action="#" method="post">
-                                <input type="text" placeholder="Search here..."/>
-                                <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- search-area end -->
 
         <!-- heading-area start -->
         <div id="blog-heading" class="heading-area">
@@ -170,7 +159,157 @@
         </div>
         <!-- heading-area end -->
 
-      <p>communitys</p>
+        <!-- CONTENT AREA --------------------------------------------------------------------------------------------->
+            <div class="container-fluid"> <!-- START OF CONTENT AREA -->
+                <div class="row">
+                    <!-- CREATE COMMUNITY SECTION -->
+                    <div class="col-lg-12" style="background-color: #1b1e21">
+                        <div class="col-sm-10"></div>
+                        <div class="col-sm-2" style="text-align: center;">
+                            <button id="button" type="button" style="padding: 1px 5px; font-family: 'Ubuntu', sans-serif; background-color: transparent; border:2px solid limegreen; border-radius: 10px; color:limegreen; margin: 3px; font-weight: bold;">Create a community</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-12" id="new-community" style="text-align: center; display: none;"> <!-- On click create community button open formular-->
+                        <div class="error-image wow bounceInUp">
+                            <h1><i class="fa fa-globe fa-spin"></i>NEW COMMUNITY</h1>
+                        </div>
+                    </div>
+                    <!-- END OF CREATE COMMUNITY SECTION -->
+
+                    <!-- INSIDE SINGLE COMMUNITY -->
+                    <div class="col-sm-3" style="text-align: center;">
+                        <div class="col-sm-12"> <!-- Communiy info title -->
+                            <br>
+                            <h3 style="margin-top: 10px; font-family: 'Ubuntu', sans-serif;">Community Info</h3>
+                        </div>
+                        <div class="col-sm-12" style="text-align: center"> <!-- Community LOGO -->
+                            <br>
+                            <i class="fa fa-dribbble" style="font-size: 100px;"></i>
+                        </div>
+                        <div class="col-sm-12" style="text-align: center"> <!-- Community NAME -->
+                            <br>
+                            <h4 style="font-family: 'Ubuntu', sans-serif; font-weight: bold;">Community Name</h4>
+                        </div>
+                        <div class="col-sm-12" style="text-align: left;"> <!-- Community OPTIONS AND SECTIONS/ROOMS -->
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-10">
+
+                            <hr><br>
+                            <h6> - Wall</h6>
+                            <h6> - Informations</h6>
+                            <h6> - Members</h6>
+                            <h6> - Settings</h6>
+                            <br>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        -----------------------------------------------------------------------------------------------------------------------
+                    </div>
+                    <div class="col-sm-3"> <!-- SECTION FOR OTHER GROPU PROMOTION AND ADVERTISEMENTS -->
+                        <br>
+                        <div class="col-sm-12" style="background-color: white; white; box-shadow: 4px 4px 9px 0px rgba(0,0,0,0.55); border-radius: 5px;"> <!-- SIMILAR GROUPS -->
+                            <div class="col-sm-12" style="text-align: center;"> <!-- Title of section -->
+                                <br>
+                                <i class="fas fa-file-contract" style="font-size: 30px; color: orange;"></i>
+                                <h3 style="margin-left: 10px; font-family: 'Ubuntu', sans-serif; display: inline; font-weight: bold;">Similar communitys</h3>
+                            </div>
+                            <div class="col-sm-12" style="text-align: center;"> <!-- Group section -->
+                                <div class="col-sm-12" id="card-hover" style="margin-top: 10px; background-color: whitesmoke; padding: 10px;"> <!-- CARD OF ONE COMMUNITY -->
+                                    <div class="col-sm-2" style="text-align: center">
+                                        <i class="fab fa-pied-piper-pp" style="font-size: 50px;"></i>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <span style="font-size: 20px; display: block;">Comunity name</span>
+                                        <small>Community Orientation/Tag</small>
+                                    </div>
+                                </div> <!--END OF CARD COMMUNITY -->
+
+                                <div class="col-sm-12" id="card-hover" style="margin-top: 10px; background-color: whitesmoke; padding: 10px;"> <!-- CARD OF ONE COMMUNITY -->
+                                    <div class="col-sm-2" style="text-align: center">
+                                        <i class="fab fa-pied-piper-pp" style="font-size: 50px;"></i>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <span style="font-size: 20px; display: block;">Comunity name</span>
+                                        <small>Community Orientation/Tag</small>
+
+                                    </div>
+                                </div> <!--END OF CARD COMMUNITY -->
+
+                                <div class="col-sm-12" id="card-hover" style="margin-top: 10px; margin-bottom: 20px; background-color: whitesmoke; padding: 10px;"> <!-- CARD OF ONE COMMUNITY -->
+                                    <div class="col-sm-2" style="text-align: center">
+                                        <i class="fab fa-pied-piper-pp" style="font-size: 50px;"></i>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <span style="font-size: 20px; display: block;">Comunity name</span>
+                                        <small>Community Orientation/Tag</small>
+
+                                    </div>
+                                </div> <!--END OF CARD COMMUNITY -->
+
+                                <div class="col-sm-12"> <!-- Open Button -->
+                                    <p><i class="fas fa-arrow-left"></i> Click for more</p>
+                                </div>
+
+                            </div>
+                        </div> <!-- END OF SIMILAR COMMUNITYS -->
+
+
+                        <div class="col-sm-12" style="margin-bottom: 30px; background-color: white; white; box-shadow: 4px 4px 9px 0px rgba(0,0,0,0.55); border-radius: 5px; margin-top: 20px;"> <!-- ADVERTISEMENTS -->
+                            <div class="col-sm-12" style="text-align: center;"> <!-- Title of section -->
+                                <br>
+                                <i class="fas fa-file-contract" style="font-size: 30px; color: green;"></i>
+                                <h3 style="margin-left: 10px; font-family: 'Ubuntu', sans-serif; display: inline; font-weight: bold;">Advertisements</h3>
+                            </div>
+                            <div class="col-sm-12" style="text-align: center;"> <!-- Group section -->
+                                <div class="col-sm-12" id="card-hover" style="margin-top: 10px; background-color: whitesmoke; padding: 10px;"> <!-- CARD OF ONE COMMUNITY -->
+                                    <div class="col-sm-2" style="text-align: center">
+                                        <i class="fab fa-pied-piper-pp" style="font-size: 50px;"></i>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <span style="font-size: 20px; display: block;">Comunity name</span>
+                                        <small>Community Orientation/Tag</small>
+                                    </div>
+                                </div> <!--END OF CARD COMMUNITY -->
+
+                                <div class="col-sm-12" id="card-hover" style="margin-top: 10px; background-color: whitesmoke; padding: 10px;"> <!-- CARD OF ONE COMMUNITY -->
+                                    <div class="col-sm-2" style="text-align: center">
+                                        <i class="fab fa-pied-piper-pp" style="font-size: 50px;"></i>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <span style="font-size: 20px; display: block;">Comunity name</span>
+                                        <small>Community Orientation/Tag</small>
+
+                                    </div>
+                                </div> <!--END OF CARD COMMUNITY -->
+
+                                <div class="col-sm-12" id="card-hover" style="margin-top: 10px; margin-bottom: 20px; background-color: whitesmoke; padding: 10px;"> <!-- CARD OF ONE COMMUNITY -->
+                                    <div class="col-sm-2" style="text-align: center">
+                                        <i class="fab fa-pied-piper-pp" style="font-size: 50px;"></i>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <span style="font-size: 20px; display: block;">Comunity name</span>
+                                        <small>Community Orientation/Tag</small>
+
+                                    </div>
+                                </div> <!--END OF CARD COMMUNITY -->
+
+                                <div class="col-sm-12"> <!-- Open Button -->
+                                    <p><i class="fas fa-arrow-left"></i> Click for more</p>
+                                </div>
+
+                        </div>
+
+
+
+                    </div> <!-- END OF SECTION FOR COMMUNITYS AND ADVERTISEMENTS -->
+
+                    <br>
+                </div>
+            </div> <!-- END OF CONTENT AREA -->
+
+        <!-- END OF CONTENT AREA -------------------------------------------------------------------------------------->
 		
 		<!-- footer-area start -->
 		<footer id="footer" class="footer-area text-center">
@@ -201,5 +340,19 @@
 		<!-- main JS
 		============================================ -->		
         <script src="js/main.js"></script>
+
+    <script>
+
+        document.getElementById('button').addEventListener('click', function (){
+            let x = document.getElementById('new-community');
+            let y = x.style.display;
+            if(y != "block")
+                x.style.display = "block";
+            else
+                x.style.display = "none";
+        });
+
+    </script>
+
     </body>
 </html>

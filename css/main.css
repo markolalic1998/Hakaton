@@ -16,6 +16,14 @@ html {
     line-height: 1.4;
 }
 
+/* mi pravili */
+#card-hover{
+    transition: .5s;
+}
+#card-hover:hover{
+    transition: .5s;
+    box-shadow: 4px 3px 9px 0px rgba(0,0,0,0.75);
+}
 /*
  * Remove text-shadow in selection highlight:
  * https://twitter.com/miketaylr/status/12228805301

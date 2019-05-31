@@ -191,7 +191,7 @@
                                         <div class="col-md-6 col-sm-6">
                                             <div class="single-popular-post">
                                                 <div class="post-img">
-                                                    <a href="#"><img src="img/blog/<?php echo $record3['cover']; ?>" alt="Popular Post"/></a>
+                                                    <a href="single-blog.php?post=<?php echo $record3['id_topics']; ?>"><img src="img/blog/<?php echo $record3['cover']; ?>" alt="Popular Post"/></a>
                                                     <a href="#" class="post-tag"><?php echo $record3['tag']; ?></a>
                                                     <div class="post-info">
                                                         <p>

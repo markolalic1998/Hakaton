@@ -229,7 +229,7 @@ function abs(){
         <div class="col-md-4">
             <span id="response"></span>
             <hr><br>
-    <form method="post" action="admin-panel.php" enctype="multipart/form-data">
+<!--    <form method="post" action="admin-panel.php" enctype="multipart/form-data"> -->
         <input type="hidden" name="size" value="1000000">
         <div class="form-group row">
             <label for="title" class="col-sm-3 col-form-label">Title</label>
@@ -254,7 +254,7 @@ function abs(){
 
         <div class="form-group row">
             <label for="content" class="col-sm-3 col-form-label">Content</label>
-            <div class="col-sm-9">
+            <div class="col-sm-12">
                 <textarea class="form-control" id="content" name="content" rows="6" required></textarea>
             </div>
         </div>
@@ -267,8 +267,8 @@ function abs(){
             </div>
         </div>
         <br>
-        <button name="send" class="btn btn-secondary btn-md btn-block" type="submit">Add Topics</button>
-    </form>
+        <button name="send" class="btn btn-secondary btn-md btn-block" id="addtopiccc" type="button">Add Topics</button>
+  <!--  </form>  -->
             <hr><br>
     </div>
 </div>
@@ -343,7 +343,7 @@ function abs(){
         </div>
     </div>
     <!-- MODAL START -->
-    <div class="modal" id="mymodal">
+    <div class="modal" id="mymodal" style="z-index: 50000;">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -465,7 +465,7 @@ function abs(){
 <!-- PHP za forme koje bira admin - dole -->
 <!-- Add topics -------------------------------- -->
 <?php
-
+/*
 $title = "";
 $tag = "";
 $desc = "";
@@ -581,6 +581,30 @@ if (isset($_POST['send'])) {
     }
     function init() {
         //     $('crown').addEventListener('click', giveAbs);
+        $('addtopiccc').addEventListener('click', sendAddTopicRequest);
+    }
+    function sendAddTopicRequest(){
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                alert(xmlhttp.responseText);
+            }
+        };
+        var title = $('title').value;
+        var tag = $('tag').value;
+        var desc = $('desc').value;
+
+        var content = $('content').value;
+        var content2 = content.toString();
+
+
+        var cover = $('cover').value;
+        var cover2 = cover.substr(12);
+
+
+        xmlhttp.open("POST", "add_topic.php", true);
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send("title="+title+"&tag="+tag+"&desc="+desc+"&content="+content2+"&cover="+cover2);
     }
 
 </script>
