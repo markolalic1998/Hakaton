@@ -195,25 +195,49 @@
                             <div class="col-sm-10">
 
                             <hr><br>
-                            <h6> - Wall</h6>
-                            <h6> - Informations</h6>
-                            <h6> - Members</h6>
-                            <h6> - Settings</h6>
-                            <br>
+                                <h6> <span style="margin-right: 7px;"><i class="fas fa-bars"></i></span> Wall</h6>
+                                <h6> <span style="margin-right: 7px;"><i class="fas fa-info"></i></span> Informations</h6>
+                                <h6> <span style="margin-right: 7px;"><i class="fas fa-users"></i></span> Members</h6>
+                                <h6> <span style="margin-right: 7px;"><i class="fas fa-cog"></i></span> Settings</h6>
+                                <br>
 
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6">
-                        -----------------------------------------------------------------------------------------------------------------------
-                    </div>
+                    <div class="col-sm-6"> <!-- START OF STATUS WALL -->
+                        <br>
+                        <div class="col-sm-12" style="background-color: white; border-radius: 5px; box-shadow: 4px 4px 9px 0px rgba(0,0,0,0.25);"> <!-- MAKE STATUS -->
+                            <div class="col-sm-12" style="margin-top: 10px;"> <!-- TITLE - MAKE Status -->
+                                <h5 style="font-family: 'Ubuntu', sans-serif; font-weight: bold;">Make a post</h5>
+                                <hr>
+                            </div>
+                            <div class="col-sm-12"> <!-- MAKE STATUS -->
+                                <div class="row">
+                                    <div class="col-sm-2"> <!-- USER'S IMAGE -->
+                                        <img id="photo" class="img-circle" style="display: block" width="50px" height="50px" src="img/profile/<?php echo $_SESSION['picture'];?>" alt="StatusPicture">
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <textarea type="text" id="makeStatus" placeholder="Write something, <?php echo $_SESSION['first']; ?>"></textarea>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="col-sm-12" style="margin-bottom: 10px;">
+                                    <div class="col-sm-4"></div>
+                                    <div class="col-sm-4" style="text-align: center;">
+                                        <button id="publish" type="button">Publish</button>
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- END OF STATUS WALL -->
                     <div class="col-sm-3"> <!-- SECTION FOR OTHER GROPU PROMOTION AND ADVERTISEMENTS -->
                         <br>
                         <div class="col-sm-12" style="background-color: white; white; box-shadow: 4px 4px 9px 0px rgba(0,0,0,0.55); border-radius: 5px;"> <!-- SIMILAR GROUPS -->
                             <div class="col-sm-12" style="text-align: center;"> <!-- Title of section -->
                                 <br>
                                 <i class="fas fa-file-contract" style="font-size: 30px; color: orange;"></i>
-                                <h3 style="margin-left: 10px; font-family: 'Ubuntu', sans-serif; display: inline; font-weight: bold;">Similar communitys</h3>
+                                <h3 style="margin-left: 10px; font-family: 'Ubuntu', sans-serif; display: inline; font-weight: bold;">Other communitys</h3>
                             </div>
                             <div class="col-sm-12" style="text-align: center;"> <!-- Group section -->
                                 <div class="col-sm-12" id="card-hover" style="margin-top: 10px; background-color: whitesmoke; padding: 10px;"> <!-- CARD OF ONE COMMUNITY -->
@@ -249,7 +273,7 @@
                                 </div> <!--END OF CARD COMMUNITY -->
 
                                 <div class="col-sm-12"> <!-- Open Button -->
-                                    <p><i class="fas fa-arrow-left"></i> Click for more</p>
+                                    <p><i class="fas fa-arrow-left"></i> Click for all</p>
                                 </div>
 
                             </div>

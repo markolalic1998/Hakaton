@@ -15,7 +15,6 @@ html {
     font-size: 1em;
     line-height: 1.4;
 }
-
 /* mi pravili */
 #card-hover{
     transition: .5s;
@@ -23,6 +22,27 @@ html {
 #card-hover:hover{
     transition: .5s;
     box-shadow: 4px 3px 9px 0px rgba(0,0,0,0.75);
+}
+#makeStatus{
+    border: none;
+    width: 100%;
+    font-size: 20px;
+    padding-top: 10px;
+}
+#publish{
+    transition: .5s;
+    padding: 1px 5px; font-family: 'Ubuntu', sans-serif;
+    background-color: transparent;
+    border:2px solid green;
+    border-radius: 5px;
+    color:green;
+    margin: 3px;
+    font-weight: bold;
+}
+#publish:hover{
+    background-color: green;
+    color: white;
+    transition: .5s;
 }
 /*
  * Remove text-shadow in selection highlight:
