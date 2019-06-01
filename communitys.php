@@ -184,11 +184,12 @@
                         </div>
                         <div class="col-sm-12" style="text-align: center"> <!-- Community LOGO -->
                             <br>
-                            <i class="fa fa-dribbble" style="font-size: 100px;"></i>
+                            <i id="comm-logo" class="fa fa-dribbble" style="font-size: 100px;"></i>
                         </div>
                         <div class="col-sm-12" style="text-align: center"> <!-- Community NAME -->
                             <br>
-                            <h4 style="font-family: 'Ubuntu', sans-serif; font-weight: bold;">Community Name</h4>
+                            <h4 id="comm-name" style="font-family: 'Ubuntu', sans-serif; font-weight: bold;">Community Name</h4>
+                            <span id="comm-id" style="display: none"></span>
                         </div>
                         <div class="col-sm-12" style="text-align: left;"> <!-- Community OPTIONS AND SECTIONS/ROOMS -->
                             <div class="col-sm-2"></div>
@@ -208,7 +209,7 @@
                         <br>
                         <div class="col-sm-12" style="background-color: white; border-radius: 5px; box-shadow: 4px 4px 9px 0px rgba(0,0,0,0.25);"> <!-- MAKE STATUS -->
                             <div class="col-sm-12" style="margin-top: 10px;"> <!-- TITLE - MAKE Status -->
-                                <h5 style="font-family: 'Ubuntu', sans-serif; font-weight: bold;">Make a post</h5>
+                                <h5 style="font-family: 'Ubuntu', sans-serif; font-weight: bold;">Make a post in <span id="status-group" style="font-family: 'Ubuntu', sans-serif; font-weight: normal">community</span></h5>
                                 <hr>
                             </div>
                             <div class="col-sm-12"> <!-- MAKE STATUS -->
@@ -239,40 +240,43 @@
                                 <i class="fas fa-file-contract" style="font-size: 30px; color: orange;"></i>
                                 <h3 style="margin-left: 10px; font-family: 'Ubuntu', sans-serif; display: inline; font-weight: bold;">Other communitys</h3>
                             </div>
-                            <div class="col-sm-12" style="text-align: center;"> <!-- Group section -->
-                                <div class="col-sm-12" id="card-hover" style="margin-top: 10px; background-color: whitesmoke; padding: 10px;"> <!-- CARD OF ONE COMMUNITY -->
-                                    <div class="col-sm-2" style="text-align: center">
-                                        <i class="fab fa-pied-piper-pp" style="font-size: 50px;"></i>
-                                    </div>
-                                    <div class="col-sm-10">
-                                        <span style="font-size: 20px; display: block;">Comunity name</span>
-                                        <small>Community Orientation/Tag</small>
-                                    </div>
-                                </div> <!--END OF CARD COMMUNITY -->
+                            <div class="col-sm-12" name="cards" style="text-align: center;"> <!-- Group section -->
+                            <?php
+                            require "database.php";
+                            $user = $_SESSION['username'];
+                            $sql_other_comm = "SELECT * from community WHERE c_abs = '$user' LIMIT 3";
+                            $result_other_comm = mysqli_query($connection, $sql_other_comm) or die(mysqli_error($connection));
 
-                                <div class="col-sm-12" id="card-hover" style="margin-top: 10px; background-color: whitesmoke; padding: 10px;"> <!-- CARD OF ONE COMMUNITY -->
-                                    <div class="col-sm-2" style="text-align: center">
-                                        <i class="fab fa-pied-piper-pp" style="font-size: 50px;"></i>
-                                    </div>
-                                    <div class="col-sm-10">
-                                        <span style="font-size: 20px; display: block;">Comunity name</span>
-                                        <small>Community Orientation/Tag</small>
+                            if(mysqli_num_rows($result_other_comm)>0){
+                                $s = 0;
+                                while($record = mysqli_fetch_array($result_other_comm, MYSQLI_ASSOC)) {
+                                    $s = $s++;
+                                    ?>
+                                    <div class="col-sm-12" onclick="openComm(<?php echo $record['id_comm'];?>)" name="cardshover" id="card-hover" style="margin-top: 10px; background-color: whitesmoke; padding: 10px; border-radius: 5px;">
+                                        <!-- CARD OF ONE COMMUNITY -->
+                                        <div class="col-sm-2" style="text-align: center">
+                                            <i class="<?php echo $record['comm_logo']; ?>" style="font-size: 35px;"></i>
+                                        </div>
+                                        <div class="col-sm-10" name="cardsinfo">
+                                            <span style="font-size: 20px; display: block;"><?php echo $record['c_name']; ?></span>
+                                            <small>Community Orientation/Tag</small>
+                                            <span id="comm-id" style="display:none;"><?php echo $record['id_comm']; ?></span>
+                                            <span id="check" style="display: none;"><?php echo $s; ?></span>
+                                            <p id="check2" style="display: none;"><?php echo $s; ?></p>
 
-                                    </div>
-                                </div> <!--END OF CARD COMMUNITY -->
+                                        </div>
+                                    </div> <!--END OF CARD COMMUNITY -->
 
-                                <div class="col-sm-12" id="card-hover" style="margin-top: 10px; margin-bottom: 20px; background-color: whitesmoke; padding: 10px;"> <!-- CARD OF ONE COMMUNITY -->
-                                    <div class="col-sm-2" style="text-align: center">
-                                        <i class="fab fa-pied-piper-pp" style="font-size: 50px;"></i>
-                                    </div>
-                                    <div class="col-sm-10">
-                                        <span style="font-size: 20px; display: block;">Comunity name</span>
-                                        <small>Community Orientation/Tag</small>
+                                    <?php
+                                }
+                                }
+                            else
+                            {
+                                echo "AKO NEKO NIJE CLAN COMMA TU TREBA DA IDE NAJPOPULARNIJI COMMOVI";
+                            }
+                                ?>
 
-                                    </div>
-                                </div> <!--END OF CARD COMMUNITY -->
-
-                                <div class="col-sm-12"> <!-- Open Button -->
+                                <div class="col-sm-12" style="margin: 5px;"> <!-- Open Button -->
                                     <p><i class="fas fa-arrow-left"></i> Click for all</p>
                                 </div>
 
@@ -367,6 +371,10 @@
 
     <script>
 
+        function $(id){
+            return document.getElementById(id);
+        }
+
         document.getElementById('button').addEventListener('click', function (){
             let x = document.getElementById('new-community');
             let y = x.style.display;
@@ -376,7 +384,37 @@
                 x.style.display = "none";
         });
 
+        $('status-group').innerHTML = $('comm-name').value;
+ //       document.getElementById('card-hover').addEventListener('click', openComm);
+
+        function openComm(commID){
+            var xmlhttp = new XMLHttpRequest();
+
+            xmlhttp.onreadystatechange = function (){
+                if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                     var x = xmlhttp.responseText;
+                    console.log(typeof x);
+                    var y = xmlhttp.responseText.split(",");
+                    $('status-group').innerHTML = y[1];
+
+
+                    $('comm-logo').className=y[0];
+                    $('comm-name').innerHTML=y[1];
+                    $('comm-id').innerHTML=y[2];
+
+                }
+            };
+
+            xmlhttp.open("POST", "load_comm.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // *
+            xmlhttp.send("comm_id="+commID);
+
+        }
+
+
+
     </script>
+
 
     </body>
 </html>
