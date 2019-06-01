@@ -22,6 +22,7 @@
         ============================================ -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
+        <link rel="stylesheet" href="css/animate.css">
 
         <!-- Bootstrap CSS
         ============================================ -->
@@ -169,7 +170,7 @@
                             <button id="button" type="button" style="padding: 1px 5px; font-family: 'Ubuntu', sans-serif; background-color: transparent; border:2px solid limegreen; border-radius: 10px; color:limegreen; margin: 3px; font-weight: bold;">Create a community</button>
                         </div>
                     </div>
-                    <div class="col-lg-12" id="new-community" style="text-align: center; display: none;"> <!-- On click create community button open formular-->
+                    <div class="col-lg-12 animated zoomIn" id="new-community" style="text-align: center; display: none;"> <!-- On click create community button open formular-->
                         <div class="error-image wow bounceInUp">
                             <h1><i class="fa fa-globe fa-spin"></i>NEW COMMUNITY</h1>
                         </div>
@@ -182,11 +183,11 @@
                             <br>
                             <h3 style="margin-top: 10px; font-family: 'Ubuntu', sans-serif;">Community Info</h3>
                         </div>
-                        <div class="col-sm-12" style="text-align: center"> <!-- Community LOGO -->
+                        <div class="col-sm-12" id="logo" style="text-align: center"> <!-- Community LOGO -->
                             <br>
                             <i id="comm-logo" class="fa fa-dribbble" style="font-size: 100px;"></i>
                         </div>
-                        <div class="col-sm-12" style="text-align: center"> <!-- Community NAME -->
+                        <div class="col-sm-12" id="c_name" style="text-align: center"> <!-- Community NAME -->
                             <br>
                             <h4 id="comm-name" style="font-family: 'Ubuntu', sans-serif; font-weight: bold;">Community Name</h4>
                             <span id="comm-id" style="display: none"></span>
@@ -389,7 +390,8 @@
 
         function openComm(commID){
             var xmlhttp = new XMLHttpRequest();
-
+            $('logo').className = "col-sm-12";
+            $('c_name').className = "col-sm-12";
             xmlhttp.onreadystatechange = function (){
                 if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
                      var x = xmlhttp.responseText;
@@ -397,20 +399,24 @@
                     var y = xmlhttp.responseText.split(",");
                     $('status-group').innerHTML = y[1];
 
+                    if(xmlhttp.responseText != "Error with data !"){
+                        $('logo').className = "col-sm-12 animated pulse";
+                        $('c_name').className = "col-sm-12 animated pulse";
 
-                    $('comm-logo').className=y[0];
-                    $('comm-name').innerHTML=y[1];
-                    $('comm-id').innerHTML=y[2];
+                        $('comm-logo').className=y[0];
+                        $('comm-name').innerHTML=y[1];
+                        $('comm-id').innerHTML=y[2];
+                        $('comm-logo').style.color = y[3];
+                    }
 
                 }
             };
 
             xmlhttp.open("POST", "load_comm.php", true);
-            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // *
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send("comm_id="+commID);
 
         }
-
 
 
     </script>

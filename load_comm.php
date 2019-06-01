@@ -6,6 +6,7 @@ $comm_id = 0;
 if(isset($_POST['comm_id']))
     $comm_id = $_POST['comm_id'];
 
+
 if($comm_id != 0)
 {
     $sql_find_comm = "SELECT * FROM community WHERE id_comm = '$comm_id';";
@@ -16,13 +17,13 @@ if($comm_id != 0)
         {
             echo $recordd['comm_logo'].",";
             echo $recordd['c_name'].",";
-            echo $recordd['id_comm'];
+            echo $recordd['id_comm'].",";
+            echo $recordd['color'];
         }
     }
 
 }
-else
-{
-    echo "Error with data !";
-}
+
+
+
 
