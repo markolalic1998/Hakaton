@@ -23,11 +23,33 @@ html {
     transition: .5s;
     box-shadow: 4px 3px 9px 0px rgba(0,0,0,0.75);
 }
-#makeStatus{
+#addStatus{
     border: none;
     width: 100%;
     font-size: 20px;
     padding-top: 10px;
+}
+#makeStatusComment{
+    border: none;
+    width: 100%;
+    margin:10px;
+    font-size: 15px;
+}
+#makeStatusComment:focus{
+    border-bottom: 1px solid #000;
+    transition: .5s;
+    width: 100%;
+}
+.status-action{
+    transition: .3s;
+    border-top:1px solid lightgrey;
+    border-bottom: 1px solid lightgrey;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+.status-action:hover{
+    background-color: beige;
+    transition: .3s;
 }
 #publish{
     transition: .5s;

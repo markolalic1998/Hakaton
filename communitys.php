@@ -208,8 +208,8 @@
                     </div>
                     <div class="col-sm-6"> <!-- START OF STATUS WALL -->
                         <br>
-                        <div class="col-sm-12" style="background-color: white; border-radius: 5px; box-shadow: 4px 4px 9px 0px rgba(0,0,0,0.25);"> <!-- MAKE STATUS -->
-                            <div class="col-sm-12" style="margin-top: 10px;"> <!-- TITLE - MAKE Status -->
+                        <div class="col-sm-12" style="background-color: white; border-radius: 5px; box-shadow: 4px 4px 9px 0px rgba(0,0,0,0.25); padding: 10px;"> <!-- MAKE STATUS -->
+                            <div class="col-sm-12" style="margin-top: 20px;"> <!-- TITLE - MAKE Status -->
                                 <h5 style="font-family: 'Ubuntu', sans-serif; font-weight: bold;">Make a post in <span id="status-group" style="font-family: 'Ubuntu', sans-serif; font-weight: normal">community</span></h5>
                                 <hr>
                             </div>
@@ -219,7 +219,7 @@
                                         <img id="photo" class="img-circle" style="display: block" width="50px" height="50px" src="img/profile/<?php echo $_SESSION['picture'];?>" alt="StatusPicture">
                                     </div>
                                     <div class="col-sm-10">
-                                        <textarea type="text" id="makeStatus" placeholder="Write something, <?php echo $_SESSION['first']; ?>"></textarea>
+                                        <textarea type="text" id="addStatus" placeholder="Write something, <?php echo $_SESSION['first']; ?>"></textarea>
                                     </div>
                                 </div>
                                 <hr>
@@ -231,6 +231,65 @@
                                     <div class="col-sm-4"></div>
                                 </div>
                             </div>
+                        </div> <!-- END OF MAKE STATUS BLOCK -->
+
+
+                        <div class="col-sm-12"> <!-- DIVIDE MAKE STATUS BLOCK AND STATUS OF OTHER MEMBERS -->
+                            <br><hr><br>
+                        </div>
+
+
+                        <div class="row" id="statusBlock">
+                       <!-- <div class="col-sm-12" id="statusBlock" style="background-color: white; white; box-shadow: 4px 4px 9px 0px rgba(0,0,0,0.55); border-radius: 5px;"> <!-- Status block -->
+                                <!--
+                            <div class="col-sm-12">
+                                <div class="col-sm-12" style="padding: 20px;">  <!-- First line in status block
+                                    <div class="col-sm-2"> <!-- PROFIL PICTURE
+                                        <img id="photo" class="img-circle" style="display: block" width="50px" height="50px" src="img/profile/" alt="StatusPicture">
+                                    </div> <!--END OF PROFIL PICTURE
+                                    <div class="col-sm-7"> <!-- Free spaces
+                                        <span style="font-size: 20px;font-family: 'Ubuntu', sans-serif; margin-top: 35px;"></span>
+                                    </div>
+                                    <div class="col-sm-3" style="text-align: right;">
+                                        <span id="date_posted"><i class="fas fa-ellipsis-v" style="font-size: 20px;"></i></span>
+                                    </div>
+                                    <div class="col-sm-10" style="text-align: left;">
+                                        <span id="date_posted">date section</span>
+                                    </div>
+                                </div><!-- First line in status block
+
+                                <div class="col-sm-12"> <!-- STATUS CONTENT
+                                    <div class="col-sm-2">
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <p style="font-size: 25px;">Status content</p>
+                                    </div>
+
+                                </div> <!-- END OF STATUS CONTENT
+
+                                <div class="col-sm-12"> <!-- USER ACTION BAR
+
+                                    <div class="col-sm-6 status-action" style="text-align: center; font-size: 15px; font-weight: bold;"> <!-- Likes
+                                        <i class="far fa-thumbs-up" style="font-size: 20px;"></i><span style="font-family: 'Ubuntu', sans-serif; margin-left: 10px;">Likes</span>
+                                    </div>
+                                    <div class="col-sm-6 status-action" style="text-align: center; font-weight: bold;"> <!-- Comment
+                                        <i class="far fa-comments" style="font-size: 19px;"></i><span style="font-family: 'Ubuntu', sans-serif; margin-left: 10px; ">Comment</span>
+                                    </div>
+
+                                </div> <!-- END OF USER ACTION BAR
+
+                                <div class="col-sm-12"> <!-- USER  COMMENT AREA
+                                    <br>
+                                    <p style="font-size: 16px;">Comment something ...</p>
+                                    <div class="col-sm-2"> <!-- USER picture
+                                        <img id="photo" class="img-circle" style="display: block" width="50px" height="50px" src="img/profile/<?php echo $_SESSION['picture'];?>" alt="StatusPicture">
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <textarea type="text" id="makeStatusComment" placeholder="Write something, <?php echo $_SESSION['first']; ?>"></textarea>
+                                    </div>
+                                </div> <!-- END of USER COMMENT AREA
+                            </div>
+                        </div> -->
                         </div>
                     </div> <!-- END OF STATUS WALL -->
                     <div class="col-sm-3"> <!-- SECTION FOR OTHER GROPU PROMOTION AND ADVERTISEMENTS -->
@@ -376,6 +435,8 @@
             return document.getElementById(id);
         }
 
+        $('publish').addEventListener('click', addStatus);
+
         document.getElementById('button').addEventListener('click', function (){
             let x = document.getElementById('new-community');
             let y = x.style.display;
@@ -407,6 +468,8 @@
                         $('comm-name').innerHTML=y[1];
                         $('comm-id').innerHTML=y[2];
                         $('comm-logo').style.color = y[3];
+
+                        loadStatus();
                     }
 
                 }
@@ -418,6 +481,40 @@
 
         }
 
+        function addStatus(){
+            var xmlhttp = new XMLHttpRequest();
+
+            xmlhttp.onreadystatechange = function(){
+                if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                    alert(xmlhttp.responseText);
+                    loadStatus();
+                }
+            };
+            var statusText = $('addStatus').value;
+            var id_comm = $('comm-id').innerHTML;
+
+            console.log(statusText+" "+id_comm);
+
+            xmlhttp.open("POST", "add_comm_status", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send('statusText='+statusText+"&id_comm="+id_comm);
+            $('addStatus').innerHTML = "";
+        }
+
+        function loadStatus(){
+            var xmlhttp = new XMLHttpRequest();
+
+            xmlhttp.onreadystatechange = function (){
+                if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                    $('statusBlock').innerHTML = xmlhttp.responseText;
+                }
+            };
+
+            var id_comm = $('comm-id').innerHTML;
+            xmlhttp.open("POST", "load_comm_status.php",  true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("id_comm="+id_comm);
+        }
 
     </script>
 
