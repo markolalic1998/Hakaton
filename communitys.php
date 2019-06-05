@@ -194,13 +194,13 @@
                         </div>
                         <div class="col-sm-12" style="text-align: left;"> <!-- Community OPTIONS AND SECTIONS/ROOMS -->
                             <div class="col-sm-2"></div>
-                            <div class="col-sm-10">
+                            <div class="col-sm-10" style="text-align: left;">
 
                             <hr><br>
-                                <h6> <span style="margin-right: 7px;"><i class="fas fa-bars"></i></span> Wall</h6>
-                                <h6> <span style="margin-right: 7px;"><i class="fas fa-info"></i></span> Informations</h6>
-                                <h6> <span style="margin-right: 7px;"><i class="fas fa-users"></i></span> Members</h6>
-                                <h6> <span style="margin-right: 7px;"><i class="fas fa-cog"></i></span> Settings</h6>
+                                <div> <h6 style="text-align: justify;"> <span ><i class="fas fa-bars"></i></span><span style="margin-left: 20px; margin-bottom: 10px;"> Wall </span></h6></div>
+                                <div> <h6 style="text-align: justify;"> <span ><i class="fas fa-info"></i></span><span style="margin-left: 20px; margin-bottom: 10px;"> Informations </span></h6></div>
+                                <div> <h6 style="text-align: justify;"> <span ><i class="fas fa-users"></i></span><span style="margin-left: 20px; margin-bottom: 10px;"> Members </span></h6></div>
+                                <div> <h6 style="text-align: justify;"> <span ><i class="fas fa-cog"></i></span><span style="margin-left: 20px; margin-bottom: 10px;"> Settings </span></h6></div>
                                 <br>
 
                             </div>
@@ -304,32 +304,45 @@
                             <?php
                             require "database.php";
                             $user = $_SESSION['username'];
-                            $sql_other_comm = "SELECT * from community WHERE c_abs = '$user' LIMIT 3";
+                            $sql_other_comm = "SELECT * from comm_members WHERE username = '$user' LIMIT 3";
                             $result_other_comm = mysqli_query($connection, $sql_other_comm) or die(mysqli_error($connection));
 
-                            if(mysqli_num_rows($result_other_comm)>0){
+                            if(mysqli_num_rows($result_other_comm)>0) {
                                 $s = 0;
-                                while($record = mysqli_fetch_array($result_other_comm, MYSQLI_ASSOC)) {
+                                while ($record = mysqli_fetch_array($result_other_comm, MYSQLI_ASSOC)) {
                                     $s = $s++;
-                                    ?>
-                                    <div class="col-sm-12" onclick="openComm(<?php echo $record['id_comm'];?>)" name="cardshover" id="card-hover" style="margin-top: 10px; background-color: whitesmoke; padding: 10px; border-radius: 5px;">
-                                        <!-- CARD OF ONE COMMUNITY -->
-                                        <div class="col-sm-2" style="text-align: center">
-                                            <i class="<?php echo $record['comm_logo']; ?>" style="font-size: 35px;"></i>
-                                        </div>
-                                        <div class="col-sm-10" name="cardsinfo">
-                                            <span style="font-size: 20px; display: block;"><?php echo $record['c_name']; ?></span>
-                                            <small>Community Orientation/Tag</small>
-                                            <span id="comm-id" style="display:none;"><?php echo $record['id_comm']; ?></span>
-                                            <span id="check" style="display: none;"><?php echo $s; ?></span>
-                                            <p id="check2" style="display: none;"><?php echo $s; ?></p>
+                                    $id_comma = $record['id_comm'];
+                                    $sql_find_comm = "SELECT * FROM community WHERE id_comm = '$id_comma';";
+                                    $result_find_comm = mysqli_query($connection, $sql_find_comm) or die(mysqli_error($connection));
 
-                                        </div>
-                                    </div> <!--END OF CARD COMMUNITY -->
+                                    if (mysqli_num_rows($result_find_comm) > 0) {
+                                        while ($record2 = mysqli_fetch_array($result_find_comm, MYSQLI_ASSOC))
+                                        {
+                                            ?>
+                                            <div class="col-sm-12" onclick="openComm(<?php echo $record2['id_comm']; ?>)"
+                                                 name="cardshover" id="card-hover"
+                                                 style="margin-top: 10px; background-color: whitesmoke; padding: 10px; border-radius: 5px;">
+                                                <!-- CARD OF ONE COMMUNITY -->
+                                                <div class="col-sm-2" style="text-align: center">
+                                                    <i class="<?php echo $record2['comm_logo']; ?>"
+                                                       style="font-size: 35px;"></i>
+                                                </div>
+                                                <div class="col-sm-10" name="cardsinfo">
+                                                    <span style="font-size: 20px; display: block;"><?php echo $record2['c_name']; ?></span>
+                                                    <small>Community Orientation/Tag</small>
+                                                    <span id="comm-id"
+                                                          style="display:none;"><?php echo $record2['id_comm']; ?></span>
+                                                    <span id="check" style="display: none;"><?php echo $s; ?></span>
+                                                    <p id="check2" style="display: none;"><?php echo $s; ?></p>
 
-                                    <?php
+                                                </div>
+                                            </div> <!--END OF CARD COMMUNITY -->
+
+                                            <?php
+                                        }
+                                    }
                                 }
-                                }
+                            }
                             else
                             {
                                 echo "AKO NEKO NIJE CLAN COMMA TU TREBA DA IDE NAJPOPULARNIJI COMMOVI";
@@ -433,6 +446,11 @@
 
         function $(id){
             return document.getElementById(id);
+        }
+
+
+        function setFocus(){
+            document.getElementById('makeStatusComment').focus(this);
         }
 
         $('publish').addEventListener('click', addStatus);
