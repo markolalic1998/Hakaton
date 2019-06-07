@@ -197,16 +197,50 @@
                             <div class="col-sm-10" style="text-align: left;">
 
                             <hr><br>
-                                <div> <h6 style="text-align: justify;"> <span ><i class="fas fa-bars"></i></span><span style="margin-left: 20px; margin-bottom: 10px;"> Wall </span></h6></div>
-                                <div> <h6 style="text-align: justify;"> <span ><i class="fas fa-info"></i></span><span style="margin-left: 20px; margin-bottom: 10px;"> Informations </span></h6></div>
-                                <div> <h6 style="text-align: justify;"> <span ><i class="fas fa-users"></i></span><span style="margin-left: 20px; margin-bottom: 10px;"> Members </span></h6></div>
-                                <div> <h6 style="text-align: justify;"> <span ><i class="fas fa-cog"></i></span><span style="margin-left: 20px; margin-bottom: 10px;"> Settings </span></h6></div>
+                                <div id="wall-btn"> <h6 style="text-align: justify;"> <span ><i class="fas fa-bars"></i></span><span style="margin-left: 20px; margin-bottom: 10px;"> Wall </span></h6></div>
+                                <div id="info-btn"> <h6 style="text-align: justify;"> <span ><i class="fas fa-info"></i></span><span style="margin-left: 20px; margin-bottom: 10px;"> Informations </span></h6></div>
+                                <div id="members-btn"> <h6 style="text-align: justify;"> <span ><i class="fas fa-users"></i></span><span style="margin-left: 20px; margin-bottom: 10px;"> Members </span></h6></div>
+                                <div id="sett-btn"> <h6 style="text-align: justify;"> <span ><i class="fas fa-cog"></i></span><span style="margin-left: 20px; margin-bottom: 10px;"> Settings </span></h6></div>
                                 <br>
 
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6"> <!-- START OF STATUS WALL -->
+
+                    <!-- START OF Community Members -->
+                    <div class="col-sm-6 animated zoomIn text-center" id="members" > <!-- START OF Community Informations -->
+                        <br>
+                        <div class="col-sm-12">
+                            <h3 style="font-family: 'Ubuntu', sans-serif; margin-bottom: 1px; font-weight: bold;">Members</h3>
+                            <h6 id="members-title"></h6>
+                        </div>
+                        <div class="col-sm-12" id="comm-members-show">
+
+                        </div>
+                    </div>
+
+                    <!-- START OF Community Informations -->
+                    <div class="col-sm-6 animated zoomIn text-center" id="information"> <!-- START OF Community Informations -->
+                        <br>
+                        <div class="col-sm-6 animated fadeIn">
+                            <h3 style="    font-family: 'Ubuntu', sans-serif; margin-bottom: 1px;">Informations</h3>
+                            <h6 id="info-title"></h6>
+                            <i id="info-comm-logo" class="fa fa-dribble" style="font-size: 60px;"></i>
+                        </div>
+                        <div class="col-sm-6 text-center animated fadeIn">
+                            <h3 style=" font-family: 'Ubuntu', sans-serif; margin-bottom: 1px;">Administrator</h3>
+                            <h6 id="c_abs"></h6>
+                            <img class="img-circle img-fluid" id="comm-abs" src="img/profile/default.jpg" alt="Admin Profile Picture" width="80px" height="80px">
+                        </div>
+                        <br><br>
+                        <div class="col-sm-12 text-center animated fadeIn">
+                            <h2 style=" font-family: 'Ubuntu', sans-serif; margin-bottom: 1px;">Description</h2>
+                            <p id="desc"></p>
+                        </div>
+                    </div>
+
+                    <!-- START OF STATUS WALL -->
+                    <div class="col-sm-6 animated zoomIn" id="wall">
                         <br>
                         <div class="col-sm-12" style="background-color: white; border-radius: 5px; box-shadow: 4px 4px 9px 0px rgba(0,0,0,0.25); padding: 10px;"> <!-- MAKE STATUS -->
                             <div class="col-sm-12" style="margin-top: 20px;"> <!-- TITLE - MAKE Status -->
@@ -444,9 +478,59 @@
 
     <script>
 
+        window.addEventListener('load', init);
+
         function $(id){
             return document.getElementById(id);
         }
+
+        function init(){
+            $('wall-btn').addEventListener('click', wallBtn);
+            $('info-btn').addEventListener('click', infoBtn);
+            $('members-btn').addEventListener('click', membersBtn);
+            $('sett-btn').addEventListener('click', settBtn);
+        }
+
+        /*  onClick function  */
+
+        function wallBtn(){
+            $('wall-btn').style.backgroundColor = 'white';
+            $('info-btn').style.backgroundColor = '#f7f7f7';
+            $('members-btn').style.backgroundColor = '#f7f7f7';
+            $('sett-btn').style.backgroundColor = '#f7f7f7';
+
+            $('wall').style.display = "block";
+            $('information').style.display = "none";
+            $('members').style.display = "none";
+        }
+        function infoBtn(){
+            $('info-btn').style.backgroundColor = 'white';
+            $('wall-btn').style.backgroundColor = '#f7f7f7';
+            $('members-btn').style.backgroundColor = '#f7f7f7';
+            $('sett-btn').style.backgroundColor = '#f7f7f7';
+
+            $('wall').style.display = "none";
+            $('members').style.display = "none";
+            $('information').style.display = "block";
+
+        }
+        function membersBtn(){
+            $('members-btn').style.backgroundColor = 'white';
+            $('info-btn').style.backgroundColor = '#f7f7f7';
+            $('wall-btn').style.backgroundColor = '#f7f7f7';
+            $('sett-btn').style.backgroundColor = '#f7f7f7';
+
+            $('wall').style.display = "none";
+            $('information').style.display = "none";
+            $('members').style.display = "block";
+        }
+        function settBtn(){
+            $('sett-btn').style.backgroundColor = 'white';
+            $('info-btn').style.backgroundColor = '#f7f7f7';
+            $('members-btn').style.backgroundColor = '#f7f7f7';
+            $('wall-btn').style.backgroundColor = '#f7f7f7';
+        }
+
 
 
         function setFocus(){
@@ -474,7 +558,7 @@
             xmlhttp.onreadystatechange = function (){
                 if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
                      var x = xmlhttp.responseText;
-                    console.log(typeof x);
+                    console.log(x);
                     var y = xmlhttp.responseText.split(",");
                     $('status-group').innerHTML = y[1];
 
@@ -482,10 +566,23 @@
                         $('logo').className = "col-sm-12 animated pulse";
                         $('c_name').className = "col-sm-12 animated pulse";
 
+                        // About communities
                         $('comm-logo').className=y[0];
                         $('comm-name').innerHTML=y[1];
                         $('comm-id').innerHTML=y[2];
                         $('comm-logo').style.color = y[3];
+
+                        // For information panel
+                        $('info-title').innerHTML = y[1];
+                        $('c_abs').innerHTML = y[4];
+                        $('comm-abs').src= "img/profile/"+y[5];
+                        $('info-comm-logo').className = y[0];
+                        $('info-comm-logo').style.color = y[3];
+
+                        //For members panel
+                        $('members-title').innerHTML = y[1];
+                        $('comm-members-show').innerHTML = y[6];
+
 
                         loadStatus();
                     }

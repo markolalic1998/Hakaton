@@ -23,6 +23,105 @@ html {
     transition: .5s;
     box-shadow: 4px 3px 9px 0px rgba(0,0,0,0.75);
 }
+#wall-btn{
+    padding-top: 7px;
+    padding-left: 15px;
+    padding-bottom: 1px;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+    transition: .3s;
+
+}
+#wall-btn:hover{
+    background-color: lightgrey;
+    transition: .3s;
+}
+#wall-btn h6 span {
+    cursor: default;
+}
+#info-btn{
+    padding-top: 7px;
+    padding-left: 15px;
+    padding-bottom: 1px;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+    transition: .3s;
+
+}
+#info-btn:hover{
+    background-color: lightgrey;
+    transition: .3s;
+}
+
+#info-btn h6 span {
+    cursor: default;
+}
+#members-btn{
+    padding-top: 7px;
+    padding-left: 15px;
+    padding-bottom: 1px;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+    transition: .3s;
+
+}
+#members-btn:hover{
+    background-color: lightgrey;
+    transition: .3s;
+}
+#members-btn h6 span {
+    cursor: default;
+}
+#sett-btn{
+    padding-top: 7px;
+    padding-left: 15px;
+    padding-bottom: 1px;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+    transition: .3s;
+
+}
+#sett-btn:hover{
+    background-color: lightgrey;
+    transition: .3s;
+}
+
+#sett-btn h6 span {
+    cursor: default;
+}
+
+#information {
+    margin-top: 15px;
+    display: none;
+}
+#information h3, h6, img{
+    text-align: center;
+}
+#members {
+    display: none;
+}
+.member-card{
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 4px 4px 9px 0px rgba(0,0,0,0.15);
+}
+.member-card-info{
+    margin-top: 5px;
+    height: 100px;
+}
+.member-card-info span{
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    cursor: default;
+}
+.member-card-info #role{
+    font-size: 16px;
+    color: grey;
+    font-weight: normal;
+    display: block;
+}
 #addStatus{
     border: none;
     width: 100%;
