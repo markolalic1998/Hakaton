@@ -165,6 +165,31 @@ html {
     color: white;
     transition: .5s;
 }
+#click_for_more{
+    transition: .2s;
+    cursor: default;
+}
+#click_for_more:hover{
+    color: red;
+    transition: .2s;
+}
+#findComm{
+    background-color: white;
+    background-image: url("searchicon.png");
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding-left: 40px;
+}
+.join{
+    color: white;
+    font-weight: bold;
+    cursor: default;
+    transition: .2s;
+}
+.join:hover{
+    color: #000;
+    transition: .2s;
+}
 /*
  * Remove text-shadow in selection highlight:
  * https://twitter.com/miketaylr/status/12228805301

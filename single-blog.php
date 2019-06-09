@@ -227,7 +227,7 @@
 							</div>
                         <br><br>
 							<div class="comments-area">
-                                <h6 style="margin-bottom: 20px;">
+                                <h5 style="margin-bottom: 20px;">
                                     <span id="showLikes" style="font-size: 30px;"></span>
                                     <?php
                                     $username = $_SESSION['username'];
@@ -247,8 +247,8 @@
                                     ?>
                                     <span style="font-size: 30px;">Like</span>
                                     <span id="like_mess" style="display: none;"></span>
-                                </h6>
-								<h6 class="title">
+                                </h5>
+								<h5 class="title">
                                     <?php
 
                                     $sql_num_comm = "SELECT count(id_comment) as num_rows from topic_comments WHERE id_topics = '$post';";
@@ -257,7 +257,7 @@
                                     $num = $values['num_rows'];
                                     echo $num." comments";
                                     ?>
-                                </h6>
+                                </h5>
                                 <ul class="comments-list">
                                     <li class="single-comment" id="response_comment"></li>
 								</ul>
@@ -311,7 +311,7 @@
         <script src="js/main.js"></script>
 
 <script type="text/javascript">
-    setInterval(loadData2, 1000);
+ //   setInterval(loadData2, 1000);
     setInterval(loadLikes, 1000);
 
     var y = $('like_mess').value;
@@ -325,6 +325,7 @@
     };
 
     window.addEventListener('load', init);
+    window.addEventListener('load', loadData2);
 
     function init() {
         $("submit").addEventListener('click', loadData);
@@ -346,6 +347,7 @@
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 $("comment_message").innerHTML = xmlhttp.responseText;
+                loadData2();
             }
         };
         var mess = $('message').value;

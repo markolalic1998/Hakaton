@@ -207,9 +207,57 @@
                         </div>
                     </div>
 
+
+                    <!-- START OF SHOW ALL COMMUNITIES -->
+                    <div class="col-sm-6 animated zoomIn text-center" id="allComm" style="display:none;"> <!-- START OF SHOW ALL COMMUNITIES -->
+                        <br>
+                        <div class="col-sm-12">
+                            <h3 style="font-family: 'Ubuntu', sans-serif; margin-bottom: 1px; font-weight: bold;">Your communites </h3>
+                            <span id="hideYourComm"><i id="hideYourComm2" class="fas fa-sort-up" style="font-size: 40px; cursor: default;"></i></span>
+                            <div class="col-sm-12" id="showAllComm" style="display: block;"></div>
+                            <div class="col-sm-12" id="showAllComm2">
+                                <br>
+                                <div class="col-sm-12">
+                                    <h3 style="font-family: 'Ubuntu', sans-serif; margin-bottom: 1px; font-weight: bold;">Find new communities on Drina</h3>
+                                    <input type="text" id="findComm">
+                                </div>
+                                <div class="col-sm-12" id="searchResults">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- START OF Community Setting -->
+                    <div class="col-sm-6 animated zoomIn text-center" id="settings" style="display:none;"> <!-- START OF Community Setting -->
+                        <br>
+                        <div class="col-sm-12">
+                            <h3 style="font-family: 'Ubuntu', sans-serif; margin-bottom: 1px; font-weight: bold;">Settings</h3>
+                        </div>
+                    </div>
+
                     <!-- START OF Community Members -->
                     <div class="col-sm-6 animated zoomIn text-center" id="members" > <!-- START OF Community Informations -->
                         <br>
+                        <div class="col-sm-12 animated fadeIn" style="display: none" id="alone">
+                            <h3 style="font-family: 'Ubuntu', sans-serif; margin-bottom: 1px; font-weight: bold;">Member</h3>
+                            <h6 id="member-name"></h6>
+
+                        <div class="col-sm-12" id="alone-info">
+                            <div class="col-sm-6">
+                                <img id="alone_mem_pic" class="img-circle" src="img/profile/default.jpg" alt="Member Pic" width="180px" height="180px">
+                            </div>
+                            <div class="col-sm-4">
+                                <h3 id="user_mem"></h3>
+                                <h3 id="status_mem"></h3>
+                                <button type="button" class="btn btn-danger">Remove</button>
+                                <button type="button" class="btn btn-primary">Role Name</button>
+                            </div>
+                        </div>
+                        </div>
+
+
                         <div class="col-sm-12">
                             <h3 style="font-family: 'Ubuntu', sans-serif; margin-bottom: 1px; font-weight: bold;">Members</h3>
                             <h6 id="members-title"></h6>
@@ -326,8 +374,12 @@
                         </div> -->
                         </div>
                     </div> <!-- END OF STATUS WALL -->
+
                     <div class="col-sm-3"> <!-- SECTION FOR OTHER GROPU PROMOTION AND ADVERTISEMENTS -->
                         <br>
+
+
+
                         <div class="col-sm-12" style="background-color: white; white; box-shadow: 4px 4px 9px 0px rgba(0,0,0,0.55); border-radius: 5px;"> <!-- SIMILAR GROUPS -->
                             <div class="col-sm-12" style="text-align: center;"> <!-- Title of section -->
                                 <br>
@@ -361,7 +413,7 @@
                                                     <i class="<?php echo $record2['comm_logo']; ?>"
                                                        style="font-size: 35px;"></i>
                                                 </div>
-                                                <div class="col-sm-10" name="cardsinfo">
+                                                <div class="col-sm-10" name="cardsinfo" style="cursor: default;">
                                                     <span style="font-size: 20px; display: block;"><?php echo $record2['c_name']; ?></span>
                                                     <small>Community Orientation/Tag</small>
                                                     <span id="comm-id"
@@ -384,12 +436,56 @@
                                 ?>
 
                                 <div class="col-sm-12" style="margin: 5px;"> <!-- Open Button -->
-                                    <p><i class="fas fa-arrow-left"></i> Click for all</p>
+                                    <p id="click_for_more"><i class="fas fa-arrow-left"></i> Click for all</p>
                                 </div>
 
                             </div>
                         </div> <!-- END OF SIMILAR COMMUNITYS -->
 
+                        <div class="col-sm-12" style="background-color: white; white; box-shadow: 4px 4px 9px 0px rgba(0,0,0,0.55); border-radius: 5px; margin-top: 20px;"> <!-- ADVERTISEMENTS -->
+                            <div class="col-sm-12" style="text-align: center;"> <!-- Title of section -->
+                                <br>
+                                <i class="fas fa-file-contract" style="font-size: 30px; color: green;"></i>
+                                <h3 style="margin-left: 10px; font-family: 'Ubuntu', sans-serif; display: inline; font-weight: bold;">Advertisements</h3>
+                            </div>
+                            <div class="col-sm-12" style="text-align: center;"> <!-- Group section -->
+                                <div class="col-sm-12" id="card-hover" style="margin-top: 10px; background-color: whitesmoke; padding: 10px;"> <!-- CARD OF ONE COMMUNITY -->
+                                    <div class="col-sm-2" style="text-align: center">
+                                        <i class="fab fa-pied-piper-pp" style="font-size: 50px;"></i>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <span style="font-size: 20px; display: block;">Community name</span>
+                                        <small>Community Orientation/Tag</small>
+                                    </div>
+                                </div> <!--END OF CARD COMMUNITY -->
+
+                                <div class="col-sm-12" id="card-hover" style="margin-top: 10px; background-color: whitesmoke; padding: 10px;"> <!-- CARD OF ONE COMMUNITY -->
+                                    <div class="col-sm-2" style="text-align: center">
+                                        <i class="fab fa-pied-piper-pp" style="font-size: 50px;"></i>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <span style="font-size: 20px; display: block;">Community name</span>
+                                        <small>Community Orientation/Tag</small>
+
+                                    </div>
+                                </div> <!--END OF CARD COMMUNITY -->
+
+                                <div class="col-sm-12" id="card-hover" style="margin-top: 10px; margin-bottom: 20px; background-color: whitesmoke; padding: 10px;"> <!-- CARD OF ONE COMMUNITY -->
+                                    <div class="col-sm-2" style="text-align: center">
+                                        <i class="fab fa-pied-piper-pp" style="font-size: 50px;"></i>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <span style="font-size: 20px; display: block;">Community name</span>
+                                        <small>Community Orientation/Tag</small>
+
+                                    </div>
+                                </div> <!--END OF CARD COMMUNITY -->
+
+                                <div class="col-sm-12"> <!-- Open Button -->
+                                    <p id="click_for_more_ad"><i class="fas fa-arrow-left"></i> Click for more</p>
+                                </div>
+                            </div>
+                        </div> <!-- END OF SECTION FOR COMMUNITYS AND ADVERTISEMENTS -->
 
                         <div class="col-sm-12" style="margin-bottom: 30px; background-color: white; white; box-shadow: 4px 4px 9px 0px rgba(0,0,0,0.55); border-radius: 5px; margin-top: 20px;"> <!-- ADVERTISEMENTS -->
                             <div class="col-sm-12" style="text-align: center;"> <!-- Title of section -->
@@ -403,7 +499,7 @@
                                         <i class="fab fa-pied-piper-pp" style="font-size: 50px;"></i>
                                     </div>
                                     <div class="col-sm-10">
-                                        <span style="font-size: 20px; display: block;">Comunity name</span>
+                                        <span style="font-size: 20px; display: block;">Community name</span>
                                         <small>Community Orientation/Tag</small>
                                     </div>
                                 </div> <!--END OF CARD COMMUNITY -->
@@ -413,7 +509,7 @@
                                         <i class="fab fa-pied-piper-pp" style="font-size: 50px;"></i>
                                     </div>
                                     <div class="col-sm-10">
-                                        <span style="font-size: 20px; display: block;">Comunity name</span>
+                                        <span style="font-size: 20px; display: block;">Community name</span>
                                         <small>Community Orientation/Tag</small>
 
                                     </div>
@@ -424,20 +520,16 @@
                                         <i class="fab fa-pied-piper-pp" style="font-size: 50px;"></i>
                                     </div>
                                     <div class="col-sm-10">
-                                        <span style="font-size: 20px; display: block;">Comunity name</span>
+                                        <span style="font-size: 20px; display: block;">Community name</span>
                                         <small>Community Orientation/Tag</small>
 
                                     </div>
                                 </div> <!--END OF CARD COMMUNITY -->
 
                                 <div class="col-sm-12"> <!-- Open Button -->
-                                    <p><i class="fas fa-arrow-left"></i> Click for more</p>
+                                    <p id="click_for_more_ad"><i class="fas fa-arrow-left"></i> Click for more</p>
                                 </div>
-
                         </div>
-
-
-
                     </div> <!-- END OF SECTION FOR COMMUNITYS AND ADVERTISEMENTS -->
 
                     <br>
@@ -487,11 +579,31 @@
         function init(){
             $('wall-btn').addEventListener('click', wallBtn);
             $('info-btn').addEventListener('click', infoBtn);
-            $('members-btn').addEventListener('click', membersBtn);
             $('sett-btn').addEventListener('click', settBtn);
+            $('click_for_more').addEventListener('click', clickForMore);
+            $('members-btn').addEventListener('click', membersBtn);
+            $('hideYourComm').addEventListener('click', showHideComm);
+            $('findComm').addEventListener('keyup', ajaxSearch);
+
         }
 
         /*  onClick function  */
+
+        function showHideComm(){
+            var showComm = $('showAllComm').style.display;
+            var hideYourComm = $('hideYourComm2');
+            if(showComm == "block")
+            {
+                $('showAllComm').style.display = "none";
+                hideYourComm.className = "fas fa-sort-down";
+            }
+            else
+            {
+                $('showAllComm').style.display = "block";
+                hideYourComm.className = "fas fa-sort-up";
+
+            }
+        }
 
         function wallBtn(){
             $('wall-btn').style.backgroundColor = 'white';
@@ -502,6 +614,8 @@
             $('wall').style.display = "block";
             $('information').style.display = "none";
             $('members').style.display = "none";
+            $('settings').style.display = "none";
+            $('allComm').style.display = "none";
         }
         function infoBtn(){
             $('info-btn').style.backgroundColor = 'white';
@@ -512,7 +626,8 @@
             $('wall').style.display = "none";
             $('members').style.display = "none";
             $('information').style.display = "block";
-
+            $('settings').style.display = "none";
+            $('allComm').style.display = "none";
         }
         function membersBtn(){
             $('members-btn').style.backgroundColor = 'white';
@@ -523,15 +638,31 @@
             $('wall').style.display = "none";
             $('information').style.display = "none";
             $('members').style.display = "block";
+            $('settings').style.display = "none";
+            $('allComm').style.display = "none";
         }
         function settBtn(){
             $('sett-btn').style.backgroundColor = 'white';
             $('info-btn').style.backgroundColor = '#f7f7f7';
             $('members-btn').style.backgroundColor = '#f7f7f7';
             $('wall-btn').style.backgroundColor = '#f7f7f7';
+
+            $('wall').style.display = "none";
+            $('information').style.display = "none";
+            $('members').style.display = "none";
+            $('settings').style.display = "block";
+            $('allComm').style.display = "none";
+
         }
+        function clickForMore(){
+            $('wall').style.display = "none";
+            $('information').style.display = "none";
+            $('members').style.display = "none";
+            $('settings').style.display = "none";
+            $('allComm').style.display = "block";
 
-
+            showCommunities();
+        }
 
         function setFocus(){
             document.getElementById('makeStatusComment').focus(this);
@@ -629,6 +760,86 @@
             xmlhttp.open("POST", "load_comm_status.php",  true);
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send("id_comm="+id_comm);
+        }
+
+        function showCommunities(){
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function (){
+                if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                    $('showAllComm').innerHTML = xmlhttp.responseText;
+                }
+            };
+            xmlhttp.open("POST", "show_communities.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send();
+        }
+
+        function ajaxSearch(){
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function (){
+                if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                    $('searchResults').innerHTML = xmlhttp.responseText;
+                }
+            };
+            var getValue = $('findComm').value;
+
+            xmlhttp.open("POST", "ajaxSearchComm.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("value="+getValue+"&code="+1);
+        }
+
+        function ajaxShowJoinBtn(){
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function (){
+                if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+
+                }
+            };
+
+            xmlhttp.open("POST", "ajaxSearchComm.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("id_comm="+id_comm+"&code2="+1);
+        }
+
+        function ajaxJoinComm(id_comm){
+
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function (){
+                if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                    alert(xmlhttp.responseText);
+
+                    if(xmlhttp.responseText == "You are now member of your new community !")
+                        showCommunities();
+                }
+            };
+
+            xmlhttp.open("POST", "ajaxSearchComm.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("id_comm="+id_comm+"&code="+2);
+        }
+
+        function ajaxMemberAlone(id_member)
+        {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function (){
+                if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+
+                    var u = xmlhttp.responseText;
+                    var j = [];
+                    j = u.split(';');
+
+                    $('alone_mem_pic').src="img/profile/"+j[2];
+                    $('user_mem').innerHTML = j[0];
+                    $('status_mem').innerHTML = j[1];
+                  //  $('member_name').innerHTML = j[3];
+
+                    $('alone').style.display = "block";
+                }
+            };
+
+            xmlhttp.open("POST", "showMemberAlone.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("id_member="+id_member);
         }
 
     </script>

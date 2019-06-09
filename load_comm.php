@@ -1,5 +1,8 @@
 <?php
 // DEO ZA PRIHVATANJE PODATAKA
+// Ovde se podaci stavljaju u jedan niz u responsText, zatim se u ifu u Ajaxu dele na y[n] i svrstavaju u predvidjene elemente
+
+session_start();
 require "database.php";
 $comm_id = 0;
 
@@ -14,19 +17,20 @@ if($comm_id != 0)
 
     if(mysqli_num_rows($result_find_comm)>0) {
         while ($recordd = mysqli_fetch_array($result_find_comm, MYSQLI_ASSOC)) {
-            echo $recordd['comm_logo'] . ",";
-            echo $recordd['c_name'] . ",";
-            echo $recordd['id_comm'] . ",";
-            echo $recordd['color'] . ",";
-            echo $recordd['c_abs'] . ",";
+            echo $recordd['comm_logo'] . ","; //y[0]
+            echo $recordd['c_name'] . ",";//y[1]
+            echo $recordd['id_comm'] . ",";//y[2]
+            echo $recordd['color'] . ",";//y[3]
+            echo $recordd['c_abs'] . ",";//y[4]
 
             $abs_username = $recordd['c_abs'];
             $sql_profile_picture = "SELECT picture FROM users WHERE username = '$abs_username';";
             $result_profile_picture = mysqli_query($connection, $sql_profile_picture) or die(mysqli_error($connection));
             $value = mysqli_fetch_array($result_profile_picture);
             $admin_pict = $value['picture'];
-            echo $admin_pict . ",";
+            echo $admin_pict . ",";//y[5]
 
+            //y[6]
             $sql_show_members = "SELECT * FROM comm_members WHERE id_comm = '$comm_id';";
             $result_show_members = mysqli_query($connection, $sql_show_members) or die(mysqli_error($connection));
             if (mysqli_num_rows($result_show_members) > 0) {
@@ -38,7 +42,7 @@ if($comm_id != 0)
                     while ($record_m_u = mysqli_fetch_array($result_member_user, MYSQLI_ASSOC)) {
                         ?>
 
-                        <div class="col-sm-4 text-center high-member-card animated fadeIn">
+                        <div class="col-sm-4 text-center high-member-card animated fadeIn" onclick="ajaxMemberAlone(<?php echo $recorddd['id_member'];?>)">
                         <br>
                         <div class="col-sm-12 member-card">
                         <div class="col-sm-12">
@@ -53,20 +57,30 @@ if($comm_id != 0)
                         </div>
                         <?php
                         $user_check = $record_m_u['username'];
-                        $sql_check_c_abs = "SELECT c_abs FROM community WHERE id_comm='$comm_id'";
+                        $sql_check_c_abs = "SELECT c_abs FROM community WHERE id_comm='$comm_id';";
                         $result_check_c_abs = mysqli_query($connection, $sql_check_c_abs) or die(mysqli_error($connection));
                         $value_c_abs = mysqli_fetch_array($result_check_c_abs);
                         $check_c_abs = $value_c_abs['c_abs'];
                         if($record_m_u['username'] != $check_c_abs) {
-                            ?>
-                            <div class="col-sm-6">
-                                <i class="fas fa-angle-double-up" style="font-size: 20px;" title="Promotion"></i>
-                            </div>
-                            <div class="col-sm-6">
-                                <i class="fas fa-user-slash" style="font-size: 20px;" title="Remove"></i>
-                            </div>
-                            <?php
+                            if($check_c_abs == $_SESSION['username']) {
+                                ?>
+                                <div class="col-sm-6">
+                                    <i class="fas fa-angle-double-up" style="font-size: 20px;" title="Promotion"></i>
+                                </div>
+                                <div class="col-sm-6">
+                                    <i class="fas fa-user-slash" style="font-size: 20px;" title="Remove"></i>
+                                </div>
+                                <?php
+                            }
+                            else
+                            {
 
+                                ?>
+                                <div class="col-sm-12 text-center" style="font-weight: bold">
+                                    Member
+                                </div>
+                                <?php
+                            }
                         }
                         else
                         {

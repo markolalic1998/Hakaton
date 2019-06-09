@@ -43,18 +43,7 @@ if(mysqli_fetch_array($result)>0) {
                 $result_fire = mysqli_query($connection, $sql_fire) or die(mysqli_error($connection));
                 $values3 = mysqli_fetch_array($result_fire);
                 $num3 = $values3['num_rows'];
-
-                if($num3 > 5) {
-                    ?>
-
-                    <i class="fas fa-fire" style="display: block; color: red; font-size: 20px;"
-                       title="More then 5 comments"></i>
-
-                    <?php
-
-                }
-                    ?>
-
+                ?>
             </div>
         </div><!-- /.single-blog-post -->
         </div>
