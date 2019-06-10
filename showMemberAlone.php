@@ -18,5 +18,5 @@ $values = mysqli_fetch_array($result_user);
 echo $values['username'].";";
 echo $value['role_name'].";";
 echo $values['picture'].";";
-echo $values['first'];
+echo $values['first']." ".$values['last'];
 

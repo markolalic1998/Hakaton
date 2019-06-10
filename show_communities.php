@@ -16,7 +16,7 @@ if(mysqli_num_rows($result_show_your_comm)>0){
             while($result_select_comm1 = mysqli_fetch_array($result_select_comm, MYSQLI_ASSOC)) {
                 ?>
 
-                <div class="col-sm-4 text-center high-member-card animated fadeIn">
+                <div class="col-sm-4 text-center high-member-card animated fadeIn" onclick="openComm(<?php echo $result_select_comm1["id_comm"]; ?>)">
                 <br>
                 <div class="col-sm-12 member-card">
                 <div class="col-sm-12">

@@ -203,10 +203,45 @@
                                 <div id="sett-btn"> <h6 style="text-align: justify;"> <span ><i class="fas fa-cog"></i></span><span style="margin-left: 20px; margin-bottom: 10px;"> Settings </span></h6></div>
                                 <br>
 
+
+                                <hr><br>
+                                <div id="chats">
+                                    <h5 style="text-align: justify; font-family: 'Ubuntu', sans-serif; font-weight: bold;"> @Chat rooms </h5>
+                                    <h6 id="cr1">general</h6>
+                                    <h6 id="cr2"></h6>
+                                    <h6 id="cr3"></h6>
+                                    <h6 id="createChat"><i id="plus" class="far fa-plus-square animated fadeIn"></i> Add new chat room</h6>
+                                </div>
+
+                                <br>
                             </div>
                         </div>
                     </div>
 
+
+                    <!-- START OF CHAT ROOMS -->
+                    <div class="col-sm-6 animated zoomIn text-center" id="cr" style="display:none;"> <!-- START OF CHAT ROOMS -->
+                        <br>
+                        <!-- Section for create chat room -->
+
+                        <div class="col-sm-12" display="none">
+
+                        </div>
+
+                        <!-- Section for messeging -->
+                        <div class="col-sm-12">
+                            <div class="col-sm-12">
+                                <h3 style="font-family: 'Ubuntu', sans-serif; margin-bottom: 1px; font-weight: bold;">Chat room </h3>
+                            </div>
+                            <div id="messBox">
+
+                            </div>
+                            <div id="addMess">
+                                <textarea id="messangerText" col="5" rows="3"></textarea>
+                                <button id="publish2" type="button">Publish</button>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- START OF SHOW ALL COMMUNITIES -->
                     <div class="col-sm-6 animated zoomIn text-center" id="allComm" style="display:none;"> <!-- START OF SHOW ALL COMMUNITIES -->
@@ -240,25 +275,33 @@
                     <!-- START OF Community Members -->
                     <div class="col-sm-6 animated zoomIn text-center" id="members" > <!-- START OF Community Informations -->
                         <br>
+
                         <div class="col-sm-12 animated fadeIn" style="display: none" id="alone">
-                            <h3 style="font-family: 'Ubuntu', sans-serif; margin-bottom: 1px; font-weight: bold;">Member</h3>
+                            <h3 style="font-family: 'Ubuntu', sans-serif; margin-bottom: 1px; font-weight: bold; display: inline">Member</h3><i id="x" style="float: right; font-size: 25px;" class="fas fa-times"></i>
                             <h6 id="member-name"></h6>
 
                         <div class="col-sm-12" id="alone-info">
                             <div class="col-sm-6">
                                 <img id="alone_mem_pic" class="img-circle" src="img/profile/default.jpg" alt="Member Pic" width="180px" height="180px">
                             </div>
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 <h3 id="user_mem"></h3>
                                 <h3 id="status_mem"></h3>
-                                <button type="button" class="btn btn-danger">Remove</button>
-                                <button type="button" class="btn btn-primary">Role Name</button>
+                                <button type="button" class="btn btn-danger" title="Remove from community">Remove</button>
+                                <button id="clickRoleName" type="button" class="btn btn-primary">Role Name</button>
+                                <br>
+                                <div>
+                                    <br>
+                                <input type="text" id="addRoleName" style="display:none;">
+                                <small id="addRoleNameHint" style="display: none">Change or add role name !</small>
+                                </div>
                             </div>
                         </div>
                         </div>
 
 
                         <div class="col-sm-12">
+                            <br>
                             <h3 style="font-family: 'Ubuntu', sans-serif; margin-bottom: 1px; font-weight: bold;">Members</h3>
                             <h6 id="members-title"></h6>
                         </div>
@@ -584,6 +627,37 @@
             $('members-btn').addEventListener('click', membersBtn);
             $('hideYourComm').addEventListener('click', showHideComm);
             $('findComm').addEventListener('keyup', ajaxSearch);
+            $('x').addEventListener('click', function(){
+                $('alone').style.display = "none";
+            });
+            $('clickRoleName').addEventListener('click', function(){
+                var addRoleName = $('addRoleName').style.display;
+                if(addRoleName == "none") {
+                    $('addRoleName').style.display = "block";
+                    $('addRoleNameHint').style.display = "block";
+                }
+                else {
+                    $('addRoleName').style.display = "none";
+                    $('addRoleNameHint').style.display = "none";
+                }
+            });
+            $('createChat').addEventListener('mouseover', function(){
+                var prove = $('plus').className;
+
+                if(prove == "far fa-plus-square animated fadeIn")
+                    $('plus').className = "fas fa-plus-square animated fadeIn";
+                else
+                    $('plus').className = "far fa-plus-square animated fadeIn";
+
+            });
+
+
+            //=========================== FOR CHAT ROOMS =============================================//
+
+            $('cr1').addEventListener('click', chatRoomOpen);
+            $('cr2').addEventListener('click', chatRoomOpen);
+            $('cr3').addEventListener('click', chatRoomOpen);
+
 
         }
 
@@ -616,6 +690,7 @@
             $('members').style.display = "none";
             $('settings').style.display = "none";
             $('allComm').style.display = "none";
+            $('cr').style.display = "none";
         }
         function infoBtn(){
             $('info-btn').style.backgroundColor = 'white';
@@ -628,6 +703,7 @@
             $('information').style.display = "block";
             $('settings').style.display = "none";
             $('allComm').style.display = "none";
+            $('cr').style.display = "none";
         }
         function membersBtn(){
             $('members-btn').style.backgroundColor = 'white';
@@ -640,6 +716,7 @@
             $('members').style.display = "block";
             $('settings').style.display = "none";
             $('allComm').style.display = "none";
+            $('cr').style.display = "none";
         }
         function settBtn(){
             $('sett-btn').style.backgroundColor = 'white';
@@ -652,7 +729,7 @@
             $('members').style.display = "none";
             $('settings').style.display = "block";
             $('allComm').style.display = "none";
-
+            $('cr').style.display = "none";
         }
         function clickForMore(){
             $('wall').style.display = "none";
@@ -660,8 +737,19 @@
             $('members').style.display = "none";
             $('settings').style.display = "none";
             $('allComm').style.display = "block";
+            $('cr').style.display = "none";
+
 
             showCommunities();
+        }
+
+        function chatRoomOpen(crID){
+            $('wall').style.display = "none";
+            $('information').style.display = "none";
+            $('members').style.display = "none";
+            $('settings').style.display = "none";
+            $('allComm').style.display = "none";
+            $('cr').style.display = "block";
         }
 
         function setFocus(){
@@ -688,6 +776,7 @@
             $('c_name').className = "col-sm-12";
             xmlhttp.onreadystatechange = function (){
                 if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                    $('alone').style.display = "none";
                      var x = xmlhttp.responseText;
                     console.log(x);
                     var y = xmlhttp.responseText.split(",");
@@ -831,8 +920,7 @@
                     $('alone_mem_pic').src="img/profile/"+j[2];
                     $('user_mem').innerHTML = j[0];
                     $('status_mem').innerHTML = j[1];
-                  //  $('member_name').innerHTML = j[3];
-
+                    $('member-name').innerHTML = j[3];
                     $('alone').style.display = "block";
                 }
             };
@@ -841,6 +929,8 @@
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send("id_member="+id_member);
         }
+
+
 
     </script>
 
