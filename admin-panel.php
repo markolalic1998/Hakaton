@@ -152,7 +152,6 @@ function abs(){
                         <nav>
                             <ul class="main-nav navbar-right">
                                 <li><a href="index.php">Home</a></li>
-                                <li><a href="#">Communitys</a></li>
                                 <li><a href="#" onclick="addTopics()">Add Topics</a></li>
                                 <li><a href="#" onclick="abs()">ABS</a></li>
                                 <li><a href="#" onclick="users()">Users</a></li>
@@ -170,8 +169,6 @@ function abs(){
                         <nav id="dropdown">
                             <ul>
                                 <li><a href="index.php">Home</a></li>
-                                <li><a href="#">Communitys</a
-                                </li>
                                 <li><a href="#" onclick="addTopics()">Add Topics</a></li>
                                 <li><a href="#" onclick="abs()">ABS</a></li>
                                 <li><a href="#" onclick="users()">Users</a></li>
@@ -395,9 +392,8 @@ function abs(){
                     <hr>
                     <p><b>Name:</b> <?php echo $_SESSION['first']." ".$_SESSION['last']; ?></p>
                     <p><b>Username:</b> <?php echo $_SESSION['username']; ?></p>
-                    <p><b>Communitys:</b> <?php ?></p>
                     <p><b>Birthday:</b> <?php echo $_SESSION['birth']; ?></p>
-                    <p><b>Registred</b> <?php echo $_SESSION['reg']; ?></p>
+                    <p><b>Registered</b> <?php echo $_SESSION['reg']; ?></p>
                     <p><b>Topics added: </b>
                         <?php
 
@@ -456,8 +452,8 @@ function abs(){
                     </tbody>
                 </table>
             </div>
-
         </div>
+
     </div>
 </div>
 <!-- PHP za forme koje bira admin - dole -->
@@ -519,8 +515,6 @@ if (isset($_POST['send'])) {
 <!-- Ubacuje container divove koji ce biti display none i kad se na nesto pritisne onda ce se prebaciti u block - gore -->
 
 
-
-
 <!-- footer-area start -->
 <footer id="footer" class="footer-area text-center">
     <div class="footer-logo">
@@ -558,9 +552,6 @@ if (isset($_POST['send'])) {
 <script src="ckeditor/ckeditor.js"></script>
 
 <script>
-    // Replace the <textarea id="editor1"> with a CKEditor
-    // instance, using default configuration.
-    CKEDITOR.replace( 'content' );
 
     window.addEventListener("load", init);
 
@@ -604,14 +595,7 @@ if (isset($_POST['send'])) {
         xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlhttp.send("title="+title+"&tag="+tag+"&desc="+desc+"&content="+content2+"&cover="+cover2);
     }
-
 </script>
-
-
-
-
-
-
 </body>
 </html>
 

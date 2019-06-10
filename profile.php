@@ -229,19 +229,6 @@
 </div>
 
 
-<!--
-
-$_SESSION['search_username'] = $_SESSION['username'];
-$_SESSION['search_first'] = $_SESSION['first'];
-$_SESSION['search_last'] = $_SESSION['last'];
-$_SESSION['search_picture'] = $_SESSION['picture'];
-$_SESSION['search_birth'] = $_SESSION['birth'];
-$_SESSION['search_reg'] = $_SESSION['reg'];
-$_SESSION['search_abs'] = $_SESSION['abs'];
-$abs1 = $_SESSION['search_abs'];
-
-
--->
 
 <div class="blog-content-area container">
     <div class="row">
@@ -270,7 +257,6 @@ $abs1 = $_SESSION['search_abs'];
                     <div class="col-md-6">
                         <p><b>Name:</b> <?php echo $_SESSION['first']." ".$_SESSION['last']; ?></p>
                         <p><b>Username:</b> <?php echo $_SESSION['username']; ?></p>
-                        <p><b>Communitys:</b> <?php ?></p>
                         <p><b>Birthday:</b> <?php echo $_SESSION['birth']; ?></p>
                         <p><b>Registred</b> <?php echo $_SESSION['reg']; ?></p>
                         <br>
@@ -288,8 +274,12 @@ $abs1 = $_SESSION['search_abs'];
                 </div>
             </div>
             <hr><br>
-
-
+            <div class="col-md-2"> <!-- only for more space -->
+            </div>
+            <!-- Ucitavanje bbanovanih usere preko json-a -->
+            <div class="col-md-8" id="readjson" style="text-align: center">
+                <p>Banned users</p>
+            </div>
         </div>
     </div>
 </div>
@@ -362,6 +352,31 @@ $abs1 = $_SESSION['search_abs'];
         $('username').value = "";
     }
 
+    function loadjson(){
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        }
+        else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var jsonData = JSON.parse(xmlhttp.responseText);
+
+                for(var i=0; i<jsonData.users.length; i++) {
+                    var user = jsonData.users[i];
+                    console.log(user.username);
+                    $("readjson").innerHTML += user.username+"<br>";
+                }
+            }
+        };
+        xmlhttp.open("POST", "jsonread.php", true);
+        xmlhttp.send();
+    }
+    addEventListener('load',loadjson);
 
     function loadMyProfile() {
         var xmlhttp;

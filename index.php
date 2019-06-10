@@ -442,7 +442,7 @@
                                     <p><b>Username:</b> <?php echo $_SESSION['username']; ?></p>
                                     <p><b>Status:</b> <?php if($abs){echo "<a href='admin-panel.php'>ABS</a>";} else{echo "Member";} ?></p>
                                     <p><b>Birthday:</b> <?php echo $_SESSION['birth']; ?></p>
-                                    <p><b>Registred</b> <?php echo $_SESSION['reg']; ?></p>
+                                    <p><b>Registered:</b> <?php echo $_SESSION['reg']; ?></p>
                                     <hr><br>
                                     <form action="logout.php" method="post">
                                         <button class="btn btn-success" name="logout" type="submit">Sign out</button>
