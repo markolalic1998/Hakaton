@@ -29,6 +29,7 @@ if($comm_id != 0) {
             $admin_pict = $value['picture'];
             echo $admin_pict . ",";//y[5]
 
+
             //y[6]
             $sql_show_members = "SELECT * FROM comm_members WHERE id_comm = '$comm_id';";
             $result_show_members = mysqli_query($connection, $sql_show_members) or die(mysqli_error($connection));
@@ -116,6 +117,7 @@ if($comm_id != 0) {
                             </div>
 
                             <?php
+
 
                         }
 

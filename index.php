@@ -196,7 +196,6 @@
                                                     <div class="post-info">
                                                         <p>
                                                             <span class="post-date"><a href="#"><?php echo $record3['created']; ?></a></span>
-                                                            <span class="post-date"><a href="#">3 comments</a></span>
                                                             <span class="post-date"><a href="#"><?php echo $record3['creator']; ?></a></span>
                                                         </p>
                                                     </div>
@@ -218,7 +217,26 @@
                         </div><!-- /.popular-posts-area -->
 
                         <div class="popular-posts-area">
-                            <h2 class="section-title" style="font-weight: bold">Topics that you like</h2>
+
+                            <?php
+                            $want_user = $_SESSION['username'];
+                            $sql_find_likes = "SELECT * FROM likes WHERE username = '$want_user';";
+                            $result_find_likes = mysqli_query($connection, $sql_find_likes) or die(mysqli_error($connection));
+
+                            if(mysqli_num_rows($result_find_likes)>0) {
+                                ?>
+                                <h2 class="section-title" style="font-weight: bold">Topics that you like</h2>
+                                <?php
+
+                            }
+                                else {
+                                    ?>
+                                    <h2 class="section-title" style="font-weight: bold"></h2>
+
+                                    <?php
+
+                                }
+                            ?>
                             <div class="row">
                                 <?php
                                 require "database.php";
@@ -237,7 +255,6 @@
                                                     <div class="post-info">
                                                         <p>
                                                             <span class="post-date"><a href="#"><?php echo $record4['created']; ?></a></span>
-                                                            <span class="post-date"><a href="#">3 comments</a></span>
                                                             <span class="post-date"><a href="#"><?php echo $record4['creator']; ?></a></span>
                                                         </p>
                                                     </div>

@@ -40,15 +40,15 @@
 			<div class="wrap-login100 p-b-160 p-t-50">
                 <form class="login100-form validate-form" method="post" action="userLogin.php">
 					<span class="login100-form-title p-b-43">
-                        <div class="welcome-section content-hidden">
-                            <div class="content-wrap">
-						        <ul class="fly-in-text">
-                                    <li>Account</li>
-                                    <li>login</li>
-                                </ul>
-                            </div>
-                        </div>
+                        <h1>Drina</h1><span id="hideYourComm"><i id="hideYourComm2" class="fas fa-sort-down" style="font-size: 20px; cursor: default;"></i></span>
 					</span>
+                    <div class="login100-form-title p-b-43 animated fadeIn" style="display: none;" id="showMore">
+                        <div class="col-sm-12" style="text-align: center">
+                            <p style="color: white; text-align: center; font-family: 'Ubuntu', sans-serif;">We are a forum,therefore if you want to have access you have to log in.</p>
+                            <p style="color: white; text-align: center; font-family: 'Ubuntu', sans-serif;">If you are visiting the forum for the first time you have to register first.You can do that by following the link below</p>
+                            <p style="color: white; text-align: center; font-family: 'Ubuntu', sans-serif;">You can do that by following the link below</p>
+                        </div>
+                    </div>
                     <p id="login-mess"></p>
 					<div class="wrap-input100 rs1 validate-input" data-validate = "Username is required">
 						<input class="input100" type="text" name="username" id="username">
@@ -97,7 +97,7 @@
 	<script src="js/mainLOG.js"></script>
 
  <script type="text/javascript">
-
+/*
      $(function() {
 
          var welcomeSection = $('.welcome-section'),
@@ -114,7 +114,7 @@
 
 
      })();
-     
+     */
 
      function login(){
          var xmlhttp = new XMLHttpRequest();
@@ -128,6 +128,13 @@
          xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
      }
 
+     document.getElementById('hideYourComm').addEventListener('click', function (){
+         var x =  document.getElementById('showMore').style.display;
+         if(x == "none")
+             document.getElementById('showMore').style.display = "block";
+         else
+             document.getElementById('showMore').style.display = "none";
+     })
 
  </script>
 

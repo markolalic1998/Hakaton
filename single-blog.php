@@ -212,6 +212,7 @@
                                 </div>
                             <?php } ?>
                             <div class="post-long-desc">
+                                <br><br><br>
 								<p>
                                     <?php echo $_SESSION['full_content']; ?>
                                 </p>
@@ -310,16 +311,19 @@
 		============================================ -->		
         <script src="js/main.js"></script>
 
-<script type="text/javascript">
+<script src="js/single-blog.js">
  //   setInterval(loadData2, 1000);
-    setInterval(loadLikes, 1000);
 
-    var y = $('like_mess').value;
-    if(y == "Unliked")
+ //   setInterval(loadLikes, 1000);
+
+    /*
+    var y = $('like_mess').className;
+    if(y == "fas fa-thumbs-up")
         $('like').className = "far fa-thumbs-up";
     else
         $('like').className = "fas fa-thumbs-up";
-
+*/
+    /*
     var $ = function (id) {
         return document.getElementById(id);
     };
@@ -396,14 +400,20 @@
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 $("like_mess").innerHTML = xmlhttp.responseText;
 
+                var y = $('like_mess').className;
+                if(y == "fas fa-thumbs-up")
+                    $('like').className = "far fa-thumbs-up";
+                else
+                    $('like').className = "fas fa-thumbs-up";
+                /*
                 if($("like_mess").value == true)
                     $('like').className = "far fa-thumbs-up";
                 else
                     $('like').className = "fas fa-thumbs-up";
-
-
-            }
-        };
+*/
+//            }
+//        };
+                                /*
         var id_topic = $('id_topic').value;
 
         xmlhttp.open("POST", "add_like.php", true);
@@ -436,6 +446,8 @@
     function openReplay(){
         $('reply').style.display="block";
     }
+    */
+
 </script>
 
     </body>

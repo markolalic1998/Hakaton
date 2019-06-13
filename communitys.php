@@ -161,7 +161,10 @@
         <!-- heading-area end -->
 
         <!-- CONTENT AREA --------------------------------------------------------------------------------------------->
-            <div class="container-fluid"> <!-- START OF CONTENT AREA -->
+
+
+
+            <div class="container-fluid" id="inside"> <!-- START OF CONTENT AREA -->
                 <div class="row">
                     <!-- CREATE COMMUNITY SECTION -->
                     <div class="col-lg-12" style="background-color: #1b1e21">
@@ -170,10 +173,82 @@
                             <button id="button" type="button" style="padding: 1px 5px; font-family: 'Ubuntu', sans-serif; background-color: transparent; border:2px solid limegreen; border-radius: 10px; color:limegreen; margin: 3px; font-weight: bold;">Create a community</button>
                         </div>
                     </div>
-                    <div class="col-lg-12 animated zoomIn" id="new-community" style="text-align: center; display: none;"> <!-- On click create community button open formular-->
-                        <div class="error-image wow bounceInUp">
-                            <h1><i class="fa fa-globe fa-spin"></i>NEW COMMUNITY</h1>
+                    <div class="col-lg-12" id="new-community" style="background-color: white; white; box-shadow: 4px 4px 9px 0px rgba(0,0,0,0.55); text-align: center; display: none; margin-bottom: 30px;"> <!-- On click create community button open formular-->
+                        <div class="col-sm-12" id="startNew">
+                            <br>
+                            <br>
+                            <h2>Create your new community</h2>
+                            <button class="btn btn-primary" type="button" id="next">Next</button>
                         </div>
+                        <div class="col-sm-12" id="step1" style="display: none;">
+                            <br><br>
+                            <h3>Step 1: Set name</h3>
+                            <p id="error1"></p>
+                            <input type="text" id="inputStep1" required placeholder="Community name">
+                            <div class="col-sm-12">
+                                <br>
+                                <button class="btn btn-primary" type="button" id="next1">Next</button>
+                                <button class="btn btn-danger" type="button" id="next1b">Back</button>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-12 " id="step2" style="display: none;">
+                            <br><br>
+                            <div class="col-sm-2">
+                            </div>
+                            <div class="col-sm-10">
+                                <?php
+                                require "database.php";
+                                $sql_logoi = "SELECT * FROM c_logos";
+                                $res_logoi = mysqli_query($connection, $sql_logoi);
+
+                                while($rec_l = mysqli_fetch_array($res_logoi)){
+                                    ?>
+                                    <div class="col-sm-2">
+                                        <i class="<?php echo $rec_l['value']; ?>" style="display: block; font-size: 35px"></i>
+                                        <p style="font-size: 20px;"><?php echo $rec_l['name']; ?></p>
+                                    </div>
+                                <?php
+                                }
+                                ?>
+                            </div>
+                            <h3>Step 2: Choose logo</h3>
+                            <p id="error2"></p>
+                            <select id="logo" required>
+                                <option value="choose">Choose logo </option>
+                                <option value="fab fa-php"><i class="fab fa-php"></i> PHP</option>
+                                <option value="fas fa-book"><i class="fas fa-book"></i> BOOK</option>
+                                <option value="fas fa-flag"><i class="fas fa-flag"></i> FLAG</option>
+                                <option value="fab fa-raspberry-pi"><i class="fab fa-raspberry-pi"> RASPBERRY</i></option>
+                                <option value="fas fa-gamepad"><i class="fas fa-gamepad"></i> GAMEPAD</option>
+                            </select>
+
+                            <button class="btn btn-danger" type="button" id="next2b">Back</button>
+                            <button class="btn btn-primary" type="button" id="next2">Next</button>
+                        </div>
+                        <div class="col-sm-12" id="step3" style="display: none;">
+                            <br><br>
+                            <h3>Step 3: Add despription</h3>
+                            <p id="error3"></p>
+                            <textarea id="description2" col="20" rows="2"></textarea>
+                            <div class="col-sm-12">
+                                <br>
+                                <button class="btn btn-danger" type="button" id="next3b">Back</button>
+                                <button class="btn btn-primary" type="button" id="next3">Next</button>
+                            </div>
+                        </div>
+                        <div class="col-sm-12" id="step4" style="display: none;">
+                            <br><br>
+                            <h3>Step 4: Create community</h3>
+                            <p id="newlogo"></p>
+                            <p id="newname" style="font-size: 30px;"></p>
+                            <button class="btn btn-success" type="button" id="create">Create</button>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <br><hr><br>
+                        </div>
+                        <hr>
                     </div>
                     <!-- END OF CREATE COMMUNITY SECTION -->
 
@@ -196,20 +271,32 @@
                             <div class="col-sm-2"></div>
                             <div class="col-sm-10" style="text-align: left;">
 
+                                <?php
+
+
+                                ?>
+
                             <hr><br>
                                 <div id="wall-btn"> <h6 style="text-align: justify;"> <span ><i class="fas fa-bars"></i></span><span style="margin-left: 20px; margin-bottom: 10px;"> Wall </span></h6></div>
                                 <div id="info-btn"> <h6 style="text-align: justify;"> <span ><i class="fas fa-info"></i></span><span style="margin-left: 20px; margin-bottom: 10px;"> Informations </span></h6></div>
                                 <div id="members-btn"> <h6 style="text-align: justify;"> <span ><i class="fas fa-users"></i></span><span style="margin-left: 20px; margin-bottom: 10px;"> Members </span></h6></div>
-                                <div id="sett-btn"> <h6 style="text-align: justify;"> <span ><i class="fas fa-cog"></i></span><span style="margin-left: 20px; margin-bottom: 10px;"> Settings </span></h6></div>
+                                <div id="sett-btn"> <h6 style="text-align: justify;"><span style="margin-left: 20px; margin-bottom: 10px;">  </span></h6></div>
                                 <br>
 
 
                                 <hr><br>
-                                <div id="chats">
+                                <div id="chatsMain" style="display: none;">
                                     <h5 style="text-align: justify; font-family: 'Ubuntu', sans-serif; font-weight: bold;"> @Chat rooms </h5>
+                                    <div id="chats" name="chats">
+
+
+
+                                    </div>
+                                    <!--
                                     <h6 id="cr1">general</h6>
                                     <h6 id="cr2"></h6>
                                     <h6 id="cr3"></h6>
+                                    -->
                                     <h6 id="createChat"><i id="plus" class="far fa-plus-square animated fadeIn"></i> Add new chat room</h6>
                                 </div>
 
@@ -224,37 +311,37 @@
                         <br>
                         <!-- Section for create chat room -->
 
-                        <div class="col-sm-12" display="none">
+                        <div class="col-sm-12" style="display:none;">
 
                         </div>
 
                         <!-- Section for messeging -->
                         <div class="col-sm-12">
                             <div class="col-sm-12">
-                                <h3 style="font-family: 'Ubuntu', sans-serif; margin-bottom: 1px; font-weight: bold;">Chat room </h3>
+                                <h3 id="cr-title" style="font-family: 'Ubuntu', sans-serif; margin-bottom: 1px; font-weight: bold;">Chat room </h3>
                             </div>
-                            <div id="messBox">
+                            <div id="messBox" class="col-sm-12">
 
                             </div>
                             <div id="addMess">
-                                <textarea id="messangerText" col="5" rows="3"></textarea>
+                                <textarea id="messangerText" col="15" rows="3"></textarea>
                                 <button id="publish2" type="button">Publish</button>
                             </div>
                         </div>
                     </div>
 
                     <!-- START OF SHOW ALL COMMUNITIES -->
-                    <div class="col-sm-6 animated zoomIn text-center" id="allComm" style="display:none;"> <!-- START OF SHOW ALL COMMUNITIES -->
+                    <div class="col-sm-6 animated zoomIn text-center" id="allComm" style="display:block;"> <!-- START OF SHOW ALL COMMUNITIES -->
                         <br>
                         <div class="col-sm-12">
-                            <h3 style="font-family: 'Ubuntu', sans-serif; margin-bottom: 1px; font-weight: bold;">Your communites </h3>
+                            <h3 style="font-family: 'Ubuntu', sans-serif; margin-bottom: 1px; font-weight: bold;"><i class="fas fa-users"></i>  Your communites </h3>
                             <span id="hideYourComm"><i id="hideYourComm2" class="fas fa-sort-up" style="font-size: 40px; cursor: default;"></i></span>
                             <div class="col-sm-12" id="showAllComm" style="display: block;"></div>
                             <div class="col-sm-12" id="showAllComm2">
                                 <br>
                                 <div class="col-sm-12">
-                                    <h3 style="font-family: 'Ubuntu', sans-serif; margin-bottom: 1px; font-weight: bold;">Find new communities on Drina</h3>
-                                    <input type="text" id="findComm">
+                                    <h3 style="font-family: 'Ubuntu', sans-serif; margin-bottom: 1px; font-weight: bold;"><i class="fas fa-search"></i> Find new communities on Drina</h3>
+                                    <input type="text" id="findComm" placeholder="Search ...">
                                 </div>
                                 <div class="col-sm-12" id="searchResults">
 
@@ -269,6 +356,18 @@
                         <br>
                         <div class="col-sm-12">
                             <h3 style="font-family: 'Ubuntu', sans-serif; margin-bottom: 1px; font-weight: bold;">Settings</h3>
+                        </div>
+                        <div class="col-sm-6">
+                            <br>
+                            <h3>Change community name</h3>
+                            <input type="text" id="chCommName">
+                            <button class="btn btn-success" id="ch">Change</button>
+                        </div>
+                        <div class="col-sm-6">
+                            <br>
+                            <h3>Change community logo</h3>
+                            <input type="text" id="chCommLogo">
+                            <button class="btn btn-success">Change</button>
                         </div>
                     </div>
 
@@ -324,14 +423,14 @@
                             <img class="img-circle img-fluid" id="comm-abs" src="img/profile/default.jpg" alt="Admin Profile Picture" width="80px" height="80px">
                         </div>
                         <br><br>
-                        <div class="col-sm-12 text-center animated fadeIn">
+                        <div class="col-sm-12 text-center animated fadeIn" style="display: none;">
                             <h2 style=" font-family: 'Ubuntu', sans-serif; margin-bottom: 1px;">Description</h2>
                             <p id="desc"></p>
                         </div>
                     </div>
 
                     <!-- START OF STATUS WALL -->
-                    <div class="col-sm-6 animated zoomIn" id="wall">
+                    <div class="col-sm-6 animated zoomIn" id="wall" style="display: none;">
                         <br>
                         <div class="col-sm-12" style="background-color: white; border-radius: 5px; box-shadow: 4px 4px 9px 0px rgba(0,0,0,0.25); padding: 10px;"> <!-- MAKE STATUS -->
                             <div class="col-sm-12" style="margin-top: 20px;"> <!-- TITLE - MAKE Status -->
@@ -474,7 +573,7 @@
                             }
                             else
                             {
-                                echo "AKO NEKO NIJE CLAN COMMA TU TREBA DA IDE NAJPOPULARNIJI COMMOVI";
+                                echo "Join the community";
                             }
                                 ?>
 
@@ -488,8 +587,8 @@
                         <div class="col-sm-12" style="background-color: white; white; box-shadow: 4px 4px 9px 0px rgba(0,0,0,0.55); border-radius: 5px; margin-top: 20px;"> <!-- ADVERTISEMENTS -->
                             <div class="col-sm-12" style="text-align: center;"> <!-- Title of section -->
                                 <br>
-                                <i class="fas fa-file-contract" style="font-size: 30px; color: green;"></i>
-                                <h3 style="margin-left: 10px; font-family: 'Ubuntu', sans-serif; display: inline; font-weight: bold;">Advertisements</h3>
+                                <i class="fas fa-file-contract" style="font-size: 30px; color: red;"></i>
+                                <h3 style="margin-left: 10px; font-family: 'Ubuntu', sans-serif; display: inline; font-weight: bold;">Informations</h3>
                             </div>
                             <div class="col-sm-12" style="text-align: center;"> <!-- Group section -->
                                 <div class="col-sm-12" id="card-hover" style="margin-top: 10px; background-color: whitesmoke; padding: 10px;"> <!-- CARD OF ONE COMMUNITY -->
@@ -611,9 +710,11 @@
 		============================================ -->		
         <script src="js/main.js"></script>
 
-    <script>
-
+    <script src="js/community.js">
+/*
         window.addEventListener('load', init);
+        window.addEventListener('load', showCommunities);
+        window.addEventListener('load', ajaxSearch);
 
         function $(id){
             return document.getElementById(id);
@@ -651,17 +752,107 @@
 
             });
 
+            $('publish2').addEventListener('click', addMess);
+            $('ch').addEventListener('click', chCommName);
 
-            //=========================== FOR CHAT ROOMS =============================================//
+            $('next').addEventListener('click', function(){
+                $('step1').style.display = "block";
+                $('step2').style.display = "none";
+                $('step3').style.display = "none";
+                $('step4').style.display = "none";
+                $('next').style.display = "none";
 
-            $('cr1').addEventListener('click', chatRoomOpen);
-            $('cr2').addEventListener('click', chatRoomOpen);
-            $('cr3').addEventListener('click', chatRoomOpen);
+            });
 
+            $('next1').addEventListener('click', function(){
+                $('step1').style.display = 'none';
+                $('step2').style.display = "block";
+                $('step3').style.display = "none";
+                $('step4').style.display = "none";
+                $('next').style.display = "none";
+                check1();
+
+            });
+            $('next1b').addEventListener('click', function(){
+                $('step1').style.display = "none";
+                $('step2').style.display = "none";
+                $('step3').style.display = "none";
+                $('step4').style.display = "none";
+                $('next').style.display = "block";
+
+            });
+            $('next2').addEventListener('click', function(){
+                $('step1').style.display = 'none';
+                $('step2').style.display = "none";
+                $('step3').style.display = "block";
+                $('step4').style.display = "none";
+                check2();
+            });
+            $('next2b').addEventListener('click', function(){
+                $('step1').style.display = "block";
+                $('step2').style.display = "none";
+                $('step3').style.display = "none";
+                $('step4').style.display = "none";
+                $('next').style.display = "none";
+
+            });
+
+            $('next3').addEventListener('click', function(){
+                $('step1').style.display = 'none';
+                $('step2').style.display = "none";
+                $('step3').style.display = "none";
+                $('step4').style.display = "block";
+                check3();
+
+                var xio = $('logo').value;
+                $('newlogo').innerHTML = '<i class="'+xio+'" style="font-size: 30px;"></i>';
+                var yio = $('inputStep1').value;
+                $('newname').innerHTML = yio;
+            });
+            $('create').addEventListener('click', createComm);
+
+        }
+        $('next3b').addEventListener('click', function(){
+            $('step1').style.display = 'none';
+            $('step2').style.display = "block";
+            $('step3').style.display = "none";
+            $('step4').style.display = "none";
+        });
+
+
+ */
+
+        /*  onClick function  */
+/*
+        function check1(){
+            var tu = $('inputStep1').value;
+            if(tu < 5 || tu > 255)
+            {
+                $('inputStep1').style.borderColor = "red";
+                $('step1').style.display = "block";
+                $('step2').style.display = "none";
+                $('error1').innerHTML = "Please fill the input field";
+            }
+            else
+            {
+                $('step1').style.display = "none";
+            }
 
         }
 
-        /*  onClick function  */
+        function check2(){
+            var ju = $('logo').value;
+            if(ju == "choose"){
+                $('logo').style.borderColor = "red";
+                $('step2').style.display = "block";
+                $('step3').style.display = "none";
+                $('error2').innerHTML = "Please choose the logo";
+            }
+            else
+            {
+                $('step2').style.display = "none";
+            }
+        }
 
         function showHideComm(){
             var showComm = $('showAllComm').style.display;
@@ -678,7 +869,21 @@
 
             }
         }
+        function check3(){
+            var ru = $('description2').value;
 
+            if(ru < 5 || ru > 255)
+            {
+                $('description2').style.borderColor = "red";
+                $('step3').style.display = "block";
+                $('step4').style.display = "none";
+                $('error3').innerHTML = "Please fill the input field";
+            }
+            else
+            {
+                $('step3').style.display = "none";
+            }
+        }
         function wallBtn(){
             $('wall-btn').style.backgroundColor = 'white';
             $('info-btn').style.backgroundColor = '#f7f7f7';
@@ -743,7 +948,7 @@
             showCommunities();
         }
 
-        function chatRoomOpen(crID){
+        function chatRoomOpen(crName){
             $('wall').style.display = "none";
             $('information').style.display = "none";
             $('members').style.display = "none";
@@ -805,6 +1010,7 @@
 
 
                         loadStatus();
+                        loadCr(commID);
                     }
 
                 }
@@ -856,6 +1062,18 @@
             xmlhttp.onreadystatechange = function (){
                 if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
                     $('showAllComm').innerHTML = xmlhttp.responseText;
+                }
+            };
+            xmlhttp.open("POST", "show_communities.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send();
+        }
+
+        function commy(){
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function (){
+                if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                    $('your').innerHTML = xmlhttp.responseText;
                 }
             };
             xmlhttp.open("POST", "show_communities.php", true);
@@ -930,8 +1148,75 @@
             xmlhttp.send("id_member="+id_member);
         }
 
+        function loadCr(commID){
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function (){
+                if(xmlhttp.readyState ==4 && xmlhttp.status == 200){
+                    $('chats').innerHTML = xmlhttp.responseText;
+                }
+            };
+            xmlhttp.open("POST", "load_chatrooms.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("comm_id="+commID);
+        }
+
+        function openCr(crID){
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function (){
+                if(xmlhttp.readyState ==4 && xmlhttp.status == 200){
+                    console.log(xmlhttp.responseText);
+
+                    chatRoomOpen();
+                    $('messBox').innerHTML = xmlhttp.responseText;
+                }
+            };
+            xmlhttp.open("POST", "openChatRoom.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("cr-id="+crID);
+        }
+
+        function addMess(){
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function (){
+                if(xmlhttp.readyState ==4 && xmlhttp.status == 200){
+                    alert(xmlhttp.responseText);
+                }
+            };
+            var com = $('comm-id').value;
+            var text_mess = $('messangerText').value;
+            var crID = $('cr1').value;
 
 
+            xmlhttp.open("POST", "load_chatrooms.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("crID="+crID+"&code="+2+"&comm-id="+com+"&text="+text_mess);
+        }
+
+        function createComm(){
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function (){
+                if(xmlhttp.readyState ==4 && xmlhttp.status == 200){
+                    alert(xmlhttp.responseText);
+                    $('step1').style.display = "none";
+                    $('step2').style.display = "none";
+                    $('step3').style.display = "none";
+                    $('step4').style.display = "none";
+                    $('next').style.display = "none";
+                    $('new-community').style.display = "none";
+
+                    $('inputStep1').innerHTML = "";
+                }
+            };
+            var input1 = $('inputStep1').value;
+            var c_logo = $('logo').value;
+            var opis = $('description2').value;
+
+
+            xmlhttp.open("POST", "create_community.php", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("input1="+input1+"&c_logo="+c_logo+"&opis="+opis);
+        }
+*/
     </script>
 
 

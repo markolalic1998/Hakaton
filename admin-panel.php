@@ -224,7 +224,7 @@ function abs(){
         <div class="col-md-4">
             <span id="response"></span>
             <hr><br>
-<!--    <form method="post" action="admin-panel.php" enctype="multipart/form-data"> -->
+    <form method="post" action="admin-panel.php" enctype="multipart/form-data">
         <input type="hidden" name="size" value="1000000">
         <div class="form-group row">
             <label for="title" class="col-sm-3 col-form-label">Title</label>
@@ -262,8 +262,8 @@ function abs(){
             </div>
         </div>
         <br>
-        <button name="send" class="btn btn-secondary btn-md btn-block" id="addtopiccc" type="button">Add Topics</button>
-  <!--  </form>  -->
+        <button name="send" class="btn btn-secondary btn-md btn-block" id="addtopiccc" type="submit">Add Topics</button>
+    </form>
             <hr><br>
     </div>
 </div>
@@ -459,7 +459,7 @@ function abs(){
 <!-- PHP za forme koje bira admin - dole -->
 <!-- Add topics -------------------------------- -->
 <?php
-/*
+
 $title = "";
 $tag = "";
 $desc = "";
@@ -496,10 +496,9 @@ if (isset($_POST['send'])) {
     }
 
 }
-    /*
+
     if(isset($_POST['cover']))
         $cover = $_POST['cover'];
-    */
 
 
 ?>
@@ -551,8 +550,8 @@ if (isset($_POST['send'])) {
     ============================================ -->
 <script src="ckeditor/ckeditor.js"></script>
 
-<script>
-
+<script src="js/admin-panel.js">
+/*
     window.addEventListener("load", init);
 
     function checkBanUnban(){
@@ -570,7 +569,7 @@ if (isset($_POST['send'])) {
     }
     function init() {
         //     $('crown').addEventListener('click', giveAbs);
-        $('addtopiccc').addEventListener('click', sendAddTopicRequest);
+  //      $('addtopiccc').addEventListener('click', sendAddTopicRequest);
     }
     function sendAddTopicRequest(){
         var xmlhttp = new XMLHttpRequest();
@@ -595,6 +594,8 @@ if (isset($_POST['send'])) {
         xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlhttp.send("title="+title+"&tag="+tag+"&desc="+desc+"&content="+content2+"&cover="+cover2);
     }
+    */
+
 </script>
 </body>
 </html>

@@ -1,11 +1,11 @@
 <?php
 
-$database= "localhost";
+$conn= "localhost";
 $user="root";
 $password="";
 $dbname="bridge";
 
-$connection = mysqli_connect($database,$user,$password,$dbname);
+$connection = mysqli_connect($conn,$user,$password,$dbname);
 
 if(!$connection){
     mysqli_error($connection);

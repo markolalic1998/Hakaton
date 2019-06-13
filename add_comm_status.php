@@ -51,6 +51,7 @@ if(!empty($statusText)) {
         if (!$result_insert_status)
             echo "Something went wrong, try later !";
 
+
     } else {
         echo "Problem with check !";
     }

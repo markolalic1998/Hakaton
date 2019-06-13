@@ -122,6 +122,17 @@ html {
     font-weight: normal;
     display: block;
 }
+#findComm{
+    padding-left: 40px;
+    border-bottom-width: 2px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    background-color: transparent;
+    border-bottom-color: #222;
+    width: 65%;
+    font-size: 18px;
+}
 #addStatus{
     border: none;
     width: 100%;
@@ -131,6 +142,12 @@ html {
 #makeStatusComment{
     border: none;
     width: 100%;
+    margin:10px;
+    font-size: 15px;
+}
+#inputStep1{
+    border: none;
+    border-bottom: 1px;
     margin:10px;
     font-size: 15px;
 }
@@ -189,13 +206,6 @@ html {
     color: red;
     transition: .2s;
 }
-#findComm{
-    background-color: white;
-    background-image: url("searchicon.png");
-    background-position: 10px 10px;
-    background-repeat: no-repeat;
-    padding-left: 40px;
-}
 .join{
     color: white;
     font-weight: bold;
@@ -232,6 +242,26 @@ html {
 #messBox{
     height: 500px;
     overflow: hidden;
+}
+#cr_message{
+    margin-top:25px;
+}
+#user-title{
+    font-family: 'Ubuntu', sans-serif;
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-align: left;
+}
+#user-pp{
+    margin-top: 8px;
+}
+#mess-text{
+    border-radius: 20px;
+    padding: 5px;
+    margin-top: 10px;
+    background-color: white;
+    color: black;
+    box-shadow: 4px 4px 9px 0px rgba(0,0,0,0.15);
 }
 /*
  * Remove text-shadow in selection highlight:

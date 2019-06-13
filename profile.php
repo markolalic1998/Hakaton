@@ -190,9 +190,9 @@
     </div>
     <div class="col-sm-2" style="margin-top: 2px;">
         <i class="far fa-user-circle" id="my" style="font-size: 30px; margin-left: 10px;"></i>
-        <i class="fas fa-inbox" style="font-size: 25px; margin-left: 10px;"></i>
+   <!--     <i class="fas fa-inbox" style="font-size: 25px; margin-left: 10px;"></i> -->
         <?php
-
+/*
         $username_notf = $_SESSION['username'];
         $sql_user_notf = "SELECT id_user as id FROM users WHERE username='$username_notf';";
         $result_user_notf = mysqli_query($connection, $sql_user_notf) or die(mysqli_error($connection));
@@ -223,6 +223,7 @@
                     <?php
                 }
         }
+*/
         ?>
 
     </div>
@@ -260,7 +261,7 @@
                         <p><b>Birthday:</b> <?php echo $_SESSION['birth']; ?></p>
                         <p><b>Registred</b> <?php echo $_SESSION['reg']; ?></p>
                         <br>
-                        <button id="settings" class="btn btn-primary">Setting</button>
+                        <button id="settings" class="btn btn-primary" style="display: none;">Setting</button>
                         <br>
                     </div>
                     <div class="col-md-4" id="sett" style="display: none">
@@ -277,7 +278,7 @@
             <div class="col-md-2"> <!-- only for more space -->
             </div>
             <!-- Ucitavanje bbanovanih usere preko json-a -->
-            <div class="col-md-8" id="readjson" style="text-align: center">
+            <div class="col-md-8" id="readjson" style="text-align: center; display: none;">
                 <p>Banned users</p>
             </div>
         </div>
@@ -315,8 +316,8 @@
 ============================================ -->
 <script src="js/main.js"></script>
 
-<script>
-
+<script src="js/profile.js">
+/*
     var $ = function (id) {
         return document.getElementById(id);
     };
@@ -406,7 +407,7 @@
         else
             x.style.display = "none";
     }
-
+*/
 </script>
 
 

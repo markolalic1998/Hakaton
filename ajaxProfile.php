@@ -28,11 +28,10 @@ $_SESSION['my'] = true; //da bi se izbegao user not found
         <div class="col-md-6">
         <p><b>Name:</b> <?php echo $_SESSION['first']." ".$_SESSION['last']; ?></p>
         <p><b>Username:</b> <?php echo $_SESSION['username']; ?></p>
-        <p><b>Communitys:</b> <?php ?></p>
         <p><b>Birthday:</b> <?php echo $_SESSION['birth']; ?></p>
         <p><b>Registred</b> <?php echo $_SESSION['reg']; ?></p>
         <br>
-            <button id="settings" class="btn btn-primary" onclick="loadSettings()">Setting</button>
+            <button id="settings" class="btn btn-primary" onclick="loadSettings()" style="display: none;">Setting</button>
             <br>
         </div>
         <div class="col-md-4" id="sett" style="display: none">
@@ -97,11 +96,10 @@ if(mysqli_num_rows($result) > 0){
             <div class="col-md-6">
                 <p><b>Name:</b> <?php echo $_SESSION['first']." ".$_SESSION['last']; ?></p>
                 <p><b>Username:</b> <?php echo $_SESSION['username']; ?></p>
-                <p><b>Communitys:</b> <?php ?></p>
                 <p><b>Birthday:</b> <?php echo $_SESSION['birth']; ?></p>
                 <p><b>Registred</b> <?php echo $_SESSION['reg']; ?></p>
                 <br>
-                <button id="settings" class="btn btn-primary" onclick="loadSettings()">Setting</button>
+                <button id="settings" class="btn btn-primary" onclick="loadSettings()" style="display: none;">Setting</button>
                 <br>
             </div>
             <div class="col-md-4" id="sett" style="display: none">

@@ -41,14 +41,8 @@
     <div class="container-login100">
         <div class="wrap-login100 p-b-160 p-t-50">
             <form class="login100-form validate-form" method="post" action="registration2.php">
-					<span class="login100-form-title p-b-43">
-						<div class="welcome-section1 content-hidden1">
-                            <div class="content-wrap1">
-						        <ul class="fly-in-text1">
-                                    <li>Registration</li>
-                                </ul>
-                            </div>
-                        </div>
+					<span class="login100-form-title p-b-43 animated zoomIn">
+                        Registration
                     </span>
                 <div class="wrap-input100 rs1 validate-input" data-validate = "First name is required">
                     <input class="input100" type="text" name="first">

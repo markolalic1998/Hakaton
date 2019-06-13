@@ -35,8 +35,7 @@ if(mysqli_num_rows($result)>0){
             <p class="author-name"><a href="#"><?php echo $_SESSION['name']; ?></a></p>
             <span class="comment-date"><?php echo $_SESSION['datetime']; ?></span>
             <p><?php echo $_SESSION['text']; ?></p>
-            <a class="reply-link" id="reply" title="Reply">reply</a>
-            <?php if($_SESSION['abs']) echo "<a id=\"del\" class=\"reply-link\" title=\"Delete\">Delete</a>"?>
+        <!--    <a class="reply-link" id="reply" title="Reply">reply</a> -->
         </div>
         <!-- replys -->
         <div class="row" id="reply_form" style="display: none">
