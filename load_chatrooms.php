@@ -5,8 +5,8 @@ include "database.php";
 // chat roooms
 
 $cr_id = 0;
-if(isset($_POST['cr-id']))
-    $cr_id = $_POST['cr-id'];
+if(isset($_POST['crID']))
+    $cr_id = $_POST['crID'];
 
 $comm_id=0;
 if (isset($_POST['comm_id']))
@@ -17,8 +17,8 @@ if (isset($_POST['code']))
     $code = $_POST['code'];
 
 $text_mess= "";
-if (isset($_POST['text_mess']))
-    $text_mess = $_POST['text_mess'];
+if (isset($_POST['text']))
+    $text_mess = $_POST['text'];
 
 
 if($code!=2) {
@@ -49,7 +49,7 @@ elseif ($code == 2){
     else
         echo "min 1 - max 255";
 
-        $sql_insert = "INSERT INTO cr_mess (id_cr, id_user, text) VALUES ('$cr_id', '$id_user', $text_mess');";
+        $sql_insert = "INSERT INTO cr_mess (id_cr, id_user, text) VALUES ('$cr_id', '$id_user', '$text_mess');";
 
 
     if($check_mess == 1)

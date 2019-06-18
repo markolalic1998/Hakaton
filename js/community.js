@@ -7,6 +7,8 @@ function $(id){
 }
 
 function init(){
+    $('leave-comm').addEventListener('click', leaveComm);
+    $('chRoleName').addEventListener('click', changeRoleName);
     $('wall-btn').addEventListener('click', wallBtn);
     $('info-btn').addEventListener('click', infoBtn);
     $('sett-btn').addEventListener('click', settBtn);
@@ -21,11 +23,13 @@ function init(){
         var addRoleName = $('addRoleName').style.display;
         if(addRoleName == "none") {
             $('addRoleName').style.display = "block";
+            $('chRoleName').style.display = "block";
             $('addRoleNameHint').style.display = "block";
         }
         else {
             $('addRoleName').style.display = "none";
             $('addRoleNameHint').style.display = "none";
+            $('chRoleName').style.display = "none";
         }
     });
     $('createChat').addEventListener('mouseover', function(){
@@ -38,7 +42,7 @@ function init(){
 
     });
 
-    $('publish2').addEventListener('click', addMess);
+    $('publish2').addEventListener('click', addMesss);
     $('ch').addEventListener('click', chCommName);
 
     $('next').addEventListener('click', function(){
@@ -104,9 +108,6 @@ $('next3b').addEventListener('click', function(){
     $('step3').style.display = "none";
     $('step4').style.display = "none";
 });
-
-
-
 
 /*  onClick function  */
 
@@ -451,9 +452,13 @@ $('next3b').addEventListener('click', function(){
             xmlhttp.onreadystatechange = function (){
                 if(xmlhttp.readyState ==4 && xmlhttp.status == 200){
                     console.log(xmlhttp.responseText);
+                    var poruke = xmlhttp.responseText;
+                    var poruke1 = poruke.split(",");
+
+                    $('hideCrId').innerHTML = poruke1[0];
 
                     chatRoomOpen();
-                    $('messBox').innerHTML = xmlhttp.responseText;
+                    $('messBox').innerHTML = poruke1[1];
                 }
             };
             xmlhttp.open("POST", "openChatRoom.php", true);
@@ -461,16 +466,16 @@ $('next3b').addEventListener('click', function(){
             xmlhttp.send("cr-id="+crID);
         }
 
-        function addMess(){
+        function addMesss(){
             var xmlhttp = new XMLHttpRequest();
+            var crID = $('hideCrId').innerHTML;
             xmlhttp.onreadystatechange = function (){
-                if(xmlhttp.readyState ==4 && xmlhttp.status == 200){
-                    alert(xmlhttp.responseText);
+                if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                    openCr(crID);
                 }
             };
             var com = $('comm-id').value;
             var text_mess = $('messangerText').value;
-            var crID = $('cr1').value;
 
 
             xmlhttp.open("POST", "load_chatrooms.php", true);
@@ -502,3 +507,68 @@ $('next3b').addEventListener('click', function(){
             xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlhttp.send("input1="+input1+"&c_logo="+c_logo+"&opis="+opis);
         }
+
+        function changeRoleName(){
+            var xmlhttp = new XMLHttpRequest();
+            var info = $('user_mem').innerHTML;
+            var comm_id = $('comm-id').innerHTML;
+            var conf = confirm("Are  you sure you want to change role of member "+ info);
+
+            var id_comm22 = $('comm-id').innerHTML;
+
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        alert(xmlhttp.responseText); // response text je id !
+                        openComm(comm_id);
+                        ajaxMemberAlone(xmlhttp.responseText);
+                        $('addRoleName').style.display = "none";
+                        $('addRoleName').value = "";
+                        $('chRoleName').style.display = "none";
+                        $('addRoleNameHint').style.display = "none";
+                    }
+                };
+                if(conf) {
+                    var y = $('addRoleName').value;
+                    var comm__id = $('comm-id').value;
+                    xmlhttp.open("POST", "role_remove_user.php", true);
+                    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    xmlhttp.send("username=" + info + "&code=" + 1 + "&new_role="+y+"&comm_id="+id_comm22);
+                }
+        }
+
+        function leaveComm(){
+            var xmlhttp = new XMLHttpRequest();
+
+            xmlhttp.onreadystatechange = function (){
+                if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                    alert(xmlhttp.responseText);
+                    if(xmlhttp.responseText == "You are not more  member of that community") {
+                        showCommunities();
+                        $('members').style.display = "none";
+                        $('allComm').style.display = "block";
+                        $('comm-id').innerHTML = "";
+                    }
+                }
+            };
+
+            var id_comm = $('comm-id').innerHTML;
+            xmlhttp.open("POST", "role_remove_user.php",  true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("id_comm="+id_comm+"&code="+3);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

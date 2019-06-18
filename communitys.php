@@ -153,7 +153,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2>Communitys</h2>
+                        <h2>Community</h2>
                     </div>
                 </div>
             </div>
@@ -177,11 +177,12 @@
                         <div class="col-sm-12" id="startNew">
                             <br>
                             <br>
-                            <h2>Create your new community</h2>
+                            <h1><i class="fas fa-users"></i></h1>
+                            <h2 style="font-family: 'Ubuntu', sans-serif; font-weight: bold;">Create your new community</h2>
+                            <br>
                             <button class="btn btn-primary" type="button" id="next">Next</button>
                         </div>
                         <div class="col-sm-12" id="step1" style="display: none;">
-                            <br><br>
                             <h3>Step 1: Set name</h3>
                             <p id="error1"></p>
                             <input type="text" id="inputStep1" required placeholder="Community name">
@@ -193,7 +194,6 @@
                             </div>
                         </div>
                         <div class="col-sm-12 " id="step2" style="display: none;">
-                            <br><br>
                             <div class="col-sm-2">
                             </div>
                             <div class="col-sm-10">
@@ -227,7 +227,6 @@
                             <button class="btn btn-primary" type="button" id="next2">Next</button>
                         </div>
                         <div class="col-sm-12" id="step3" style="display: none;">
-                            <br><br>
                             <h3>Step 3: Add despription</h3>
                             <p id="error3"></p>
                             <textarea id="description2" col="20" rows="2"></textarea>
@@ -280,12 +279,12 @@
                                 <div id="wall-btn"> <h6 style="text-align: justify;"> <span ><i class="fas fa-bars"></i></span><span style="margin-left: 20px; margin-bottom: 10px;"> Wall </span></h6></div>
                                 <div id="info-btn"> <h6 style="text-align: justify;"> <span ><i class="fas fa-info"></i></span><span style="margin-left: 20px; margin-bottom: 10px;"> Informations </span></h6></div>
                                 <div id="members-btn"> <h6 style="text-align: justify;"> <span ><i class="fas fa-users"></i></span><span style="margin-left: 20px; margin-bottom: 10px;"> Members </span></h6></div>
-                                <div id="sett-btn"> <h6 style="text-align: justify;"><span style="margin-left: 20px; margin-bottom: 10px;">  </span></h6></div>
+                                <div id="sett-btn"> <h6 style="text-align: justify;"><i class="fas fa-tools"></i><span style="margin-left: 20px; margin-bottom: 10px;">Settings</span></h6></div>
                                 <br>
 
 
                                 <hr><br>
-                                <div id="chatsMain" style="display: none;">
+                                <div id="chatsMain">
                                     <h5 style="text-align: justify; font-family: 'Ubuntu', sans-serif; font-weight: bold;"> @Chat rooms </h5>
                                     <div id="chats" name="chats">
 
@@ -301,6 +300,8 @@
                                 </div>
 
                                 <br>
+                                <hr>
+                                <div id="leave-comm"> <h6 style="text-align: justify;"><i class="fas fa-sign-out-alt"></i><span style="margin-left: 20px; margin-bottom: 10px;">Leave</span></h6></div>
                             </div>
                         </div>
                     </div>
@@ -319,6 +320,7 @@
                         <div class="col-sm-12">
                             <div class="col-sm-12">
                                 <h3 id="cr-title" style="font-family: 'Ubuntu', sans-serif; margin-bottom: 1px; font-weight: bold;">Chat room </h3>
+                                <span id="hideCrId"></span>
                             </div>
                             <div id="messBox" class="col-sm-12">
 
@@ -393,6 +395,7 @@
                                     <br>
                                 <input type="text" id="addRoleName" style="display:none;">
                                 <small id="addRoleNameHint" style="display: none">Change or add role name !</small>
+                                    <button type="button" class="btn btn-primary" id="chRoleName" style="display: none;">Add/Change Role</button>
                                 </div>
                             </div>
                         </div>

@@ -90,6 +90,25 @@ html {
     cursor: default;
 }
 
+#leave-comm{
+    padding-top: 7px;
+    padding-left: 15px;
+    padding-bottom: 1px;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+    transition: .3s;
+
+}
+#leave-comm:hover{
+    background-color: indianred;
+    transition: .3s;
+}
+
+#leave-comm h6 span {
+    cursor: default;
+}
+
+
 #information {
     margin-top: 15px;
     display: none;
@@ -241,7 +260,7 @@ html {
 }
 #messBox{
     height: 500px;
-    overflow: hidden;
+    overflow: scroll;
 }
 #cr_message{
     margin-top:25px;
